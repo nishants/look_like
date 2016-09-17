@@ -6,6 +6,6 @@ describe "look_like" do
   end
 
   it "single words are similar" do
-    expect("Sam").to look_like("Wilma")
+    expect("Sam").to look_like("Sam Dam")
   end
 end

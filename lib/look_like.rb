@@ -9,7 +9,7 @@ RSpec::Matchers.define :look_like do |expected|
     actual_desc   = "one word"
     expected_desc = "two words"
     messages[actual] = method_name(actual, actual_desc, expected, expected_desc)
-    true
+    false
   end
 
   def method_name(actual, actual_desc, expected, expected_desc)

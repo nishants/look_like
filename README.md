@@ -1,6 +1,8 @@
-# LookLike
+# look_like matcher
 This gem is a collection of rspec matchers, for writing wireframe tests.
-
+These are useful for writing sanity tests in higher environments where we cannot control the data consumed by an app.
+This can also be used in a production environment.
+You can reuse your code/specs for regression tests.  
 
 ## Installation
 
@@ -12,13 +14,21 @@ gem 'look_like'
 
 And then execute:
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install look_like
+    $ bundle install
 
 ## Usage
+Following will result in error : 
+```ruby
+it "single word is different than two words" do
+    expect("Sam").to look_like("Sam Dam")
+end
+
+# results in error
+# expected  "Sam" (one word), 
+# to look like "Sam Dam" (two words)
+
+```
+
 
 
 ## Development
