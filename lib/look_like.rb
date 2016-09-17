@@ -17,18 +17,7 @@ module LookLike
   end
 end
 
-LookLike::Matchers.define({
-                              :name     => :equality,
-                              :desc     => "",
-                              :priority => 6,
-                              :select   => lambda{|keyword|
-                                true
-                              },
-                              :match    => lambda{|actual, expected|
-                                actual == expected
-                              }
-                          })
-
+require 'matchers/equality'
 
 RSpec::Matchers.define :look_like do |expected|
   messages = {}
