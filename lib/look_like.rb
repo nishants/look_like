@@ -1,15 +1,40 @@
 require "look_like/version"
 require 'rspec/expectations'
 
+module LookLike
+  class Matchers
+    @@matchers = []
+    def self.define(matcher)
+      @@matchers.push(matcher)
+    end
+
+    def self.find(keyword)
+      @@matchers.find { |matcher|
+        matcher[:select].call(keyword)
+      }
+    end
+
+  end
+end
+
+LookLike::Matchers.define({
+                              :name     => :equality,
+                              :desc     => "",
+                              :priority => 6,
+                              :select   => lambda{|keyword|
+                                true
+                              },
+                              :match    => lambda{|actual, expected|
+                                actual == expected
+                              }
+                          })
+
 
 RSpec::Matchers.define :look_like do |expected|
   messages = {}
 
   match do |actual|
-    actual_desc   = "one word"
-    expected_desc = "two words"
-    messages[actual] = method_name(actual, actual_desc, expected, expected_desc)
-    false
+    messages[actual] = LookLike::Matchers.find(expected)[:match].call(actual, expected)
   end
 
   def method_name(actual, actual_desc, expected, expected_desc)
@@ -21,7 +46,9 @@ RSpec::Matchers.define :look_like do |expected|
   end
 end
 
-
-module LookLike
-
-end
+a = Class.new{
+  def name
+    "manoj"
+  end
+}
+a.name

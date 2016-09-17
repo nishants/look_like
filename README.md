@@ -28,7 +28,17 @@ end
 # to look like "Sam Dam" (two words)
 
 ```
+## Custom Matchers
+```ruby
 
+LookLike::Matchers.define({
+                              :name     => :single_word,
+                              :desc     => "single word",
+                              :priority => 7,
+                              :select   => lambda{|keyword|},
+                              :match    => lambda{|actual, expected|} 
+                          })
+```
 
 
 ## Development

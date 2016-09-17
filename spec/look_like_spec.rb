@@ -5,7 +5,7 @@ describe "look_like" do
     expect(LookLike::VERSION).not_to be nil
   end
 
-  it "single words are similar" do
-    expect("Sam").to look_like("Sam Dam")
+  it "every thing looks like itself" do
+    expect("Sam").to look_like("Sam")
   end
 end
