@@ -1,16 +1,16 @@
 require "look_like/version"
-require 'rspec/expectations'
+require "look_like/matcher"
 
 module LookLike
   class Matchers
     @@matchers = []
-    def self.define(matcher)
-      @@matchers.push(matcher)
+    def self.define(config)
+      @@matchers.push(LookLike::Matcher.new(config))
     end
 
     def self.find(keyword)
       @@matchers.find { |matcher|
-        matcher[:select].call(keyword)
+        matcher.select(keyword)
       }
     end
 
