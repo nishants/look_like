@@ -6,9 +6,12 @@ describe "word matching" do
   end
 
   it "single words look similar" do
+    expect("").not_to look_like("Sam")
+    expect("").to look_like("")
+    expect(" ").not_to look_like("a b")
+    expect(" Wilma ").to look_like("Sam")
+    expect("Wilma").to look_like(" Sam ")
     expect("Wilma").to look_like("Sam")
-    expect("Sam").to look_like("Wilma")
-    expect("Vinod").to look_like("Wilma")
 
     expect("two words").not_to look_like("oneword")
     expect("oneword").not_to look_like("two words")
