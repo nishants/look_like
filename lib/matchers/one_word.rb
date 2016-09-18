@@ -5,7 +5,7 @@ LookLike::Matchers.define({
                               :select   => lambda{|keyword|
                                 !keyword.strip.include? " "
                               },
-                              :match    => lambda{|actual, expected|
+                              :match    => lambda{|actual|
                                 !actual.strip.include? " "
                               }
                           })

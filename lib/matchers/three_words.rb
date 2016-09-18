@@ -12,7 +12,7 @@ LookLike::Matchers.define(
           has_three_words.call(keyword)
 
         },
-        :match => lambda { |actual, expected|
+        :match => lambda { |actual|
           has_three_words.call(actual)
         }
     })

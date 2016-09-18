@@ -21,7 +21,7 @@ module LookLike
     end
 
     def match(actual, expected)
-      @matcher.call(actual, expected)
+      @matcher.parameters.length == 2 ? @matcher.call(actual, expected) : @matcher.call(actual);
     end
 
     def apply(key)

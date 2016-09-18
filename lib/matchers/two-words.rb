@@ -6,7 +6,7 @@ LookLike::Matchers.define(
         :select => lambda { |keyword|
           !keyword.strip.sub(" ", "").include? " "
         },
-        :match => lambda { |actual, expected|
+        :match => lambda { |actual|
           more_than_one = actual.strip.include? " "
           more_than_two = actual.strip.sub(" ", "").include? " "
           more_than_one && !more_than_two
