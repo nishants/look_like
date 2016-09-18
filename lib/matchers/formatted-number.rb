@@ -1,8 +1,8 @@
-format = /^\$[\d,]+\d$/
+format = /^[\d,]+\d$/
 LookLike::Matchers.define(
     {
-        :name     => :fomatted_dollars,
-        :desc     => "formatted dollars",
+        :name     => :fomatted_number,
+        :desc     => "formatted number",
         :priority => 5,
         :select   => lambda{|keyword|
           format === keyword

@@ -1,4 +1,4 @@
-format = /^$\$[\d,]+\d$/
+format = /^\$[\d,]+\d$/
 LookLike::Matchers.define(
     {
         :name     => :fomatted_dollars,
