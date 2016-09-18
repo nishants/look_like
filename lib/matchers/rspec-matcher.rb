@@ -3,7 +3,7 @@ require 'rspec/expectations'
 RSpec::Matchers.define :look_like do |expected|
 
   match do |actual|
-    expected === actual  || LookLike::Matchers.find(expected).match(actual, expected)
+    !!actual && (expected === actual  || LookLike::Matchers.find(expected).match(actual, expected))
   end
 
   failure_message do |actual|

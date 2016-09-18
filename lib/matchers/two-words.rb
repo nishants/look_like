@@ -4,12 +4,10 @@ LookLike::Matchers.define(
         :desc => "two words",
         :priority => 6,
         :select => lambda { |keyword|
-          !keyword.strip.sub(" ", "").include? " "
+          LookLike::MatcherSupport.count_words(keyword) == 2
         },
         :match => lambda { |actual|
-          more_than_one = actual.strip.include? " "
-          more_than_two = actual.strip.sub(" ", "").include? " "
-          more_than_one && !more_than_two
+          LookLike::MatcherSupport.count_words(actual) == 2
         }
     })
 

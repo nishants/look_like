@@ -1,12 +1,12 @@
 LookLike::Matchers.define({
                               :name     => :one_word,
                               :desc     => "one word",
-                              :priority => 6,
+                              :priority => 7,
                               :select   => lambda{|keyword|
-                                !keyword.strip.include? " "
+                                LookLike::MatcherSupport.count_words(keyword) == 1
                               },
                               :match    => lambda{|actual|
-                                !actual.strip.include? " "
+                                LookLike::MatcherSupport.count_words(actual) == 1
                               }
                           })
 

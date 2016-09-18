@@ -1,6 +1,6 @@
 LookLike::Matchers.define({
-                              :name     => :not_found,
-                              :desc     => "no matcher defined",
+                              :name     => :regex,
+                              :desc     => "regex ",
                               :priority => 5,
                               :select   => lambda{|keyword|
                                 keyword.start_with?("/") && keyword.end_with?("/")
