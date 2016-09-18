@@ -10,8 +10,6 @@ describe "look_like" do
     expect("1").to look_like("1")
     expect("<:L#$%WRGSDF").to look_like("<:L#$%WRGSDF")
     expect("true").to look_like("true")
-    expect("two words").not_to look_like("oneword")
-    expect("oneword").not_to look_like("two words")
   end
 
 end
