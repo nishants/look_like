@@ -2,7 +2,7 @@ require "uri"
 module LookLike
   class MatcherSupport
     def self.count_words(string)
-      string.split(" ").length
+      string.strip.split(" ").length
     end
 
     def self.is_url(string)
