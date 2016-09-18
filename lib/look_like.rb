@@ -6,6 +6,7 @@ module LookLike
     @@matchers = []
     def self.define(config)
       @@matchers.push(LookLike::Matcher.new(config))
+      @@matchers = @@matchers.sort_by {|matcher| matcher.priority}
     end
 
     def self.find(keyword)

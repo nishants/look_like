@@ -1,7 +1,7 @@
 LookLike::Matchers.define({
                               :name     => :not_found,
                               :desc     => "no matcher defined",
-                              :priority => 6,
+                              :priority => 10,
                               :select   => lambda{|keyword|
                                 true
                               },
