@@ -4,9 +4,6 @@ describe "url" do
   it "value with http/https" do
     expect("http://google.com").to look_like("http://google.com")
     expect("https://google.com").to look_like("http://google.com")
-    expect(nil).not_to look_like("http://google.com")
-    expect("").not_to look_like("http://google.com")
-    expect(" ").not_to look_like("http://google.com")
 
     expect("http://google.com").to look_like("https://google.com")
     expect("https://google.com").to look_like("https://google.com")
@@ -20,6 +17,12 @@ describe "url" do
     expect("googlecom").not_to look_like("http://google.com")
     expect("google com").not_to look_like("http://google.com")
     expect("google com").not_to look_like("http://google.com")
+  end
+
+  it "nil and empty values" do
+    expect(nil).not_to look_like("http://google.com")
+    expect("").not_to look_like("http://google.com")
+    expect(" ").not_to look_like("http://google.com")
   end
 
 end
