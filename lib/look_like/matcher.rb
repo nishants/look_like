@@ -20,6 +20,10 @@ module LookLike
       "expected  \"#{actual}\" to look like \"#{expected}\" (#{@desc})"
     end
 
+    def negate_error(actual, expected)
+      "Negation is not supported !" + "\n" + "Compared  \"#{actual}\" with \"#{expected}\" (#{@desc})"
+    end
+
     def match(actual, expected)
       @matcher.parameters.length == 2 ? @matcher.call(actual, expected) : @matcher.call(actual);
     end

@@ -9,4 +9,8 @@ RSpec::Matchers.define :look_like do |expected|
   failure_message do |actual|
     LookLike::Matchers.find(expected).error(actual, expected)
   end
+
+  failure_message_when_negated do |actual|
+    LookLike::Matchers.find(expected).negate_error(actual, expected)
+  end
 end
