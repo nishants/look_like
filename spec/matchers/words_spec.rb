@@ -16,6 +16,16 @@ describe "word matching" do
 
   it "two words look similar" do
     expect("a cat").to look_like("two words")
+    expect("a cat").not_to look_like("a three words")
+    expect("a three words").not_to look_like("a cat")
+  end
+
+  it "three words look similar" do
+    expect("a white cat").to look_like("a three words")
+
+    expect("a three words").not_to look_like("cat")
+    expect("a three words").not_to look_like("a cat")
+    expect("a white cat").not_to look_like("a four word sentence")
   end
 
   end
