@@ -1,12 +1,12 @@
 LookLike::Matchers.define({
-                              :name     => :equality,
-                              :desc     => "",
+                              :name     => :not_found,
+                              :desc     => "no matcher defined",
                               :priority => 6,
                               :select   => lambda{|keyword|
                                 true
                               },
                               :match    => lambda{|actual, expected|
-                                actual == expected
+                                false
                               }
                           })
 
