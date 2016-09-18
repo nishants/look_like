@@ -11,4 +11,3 @@ LookLike::Matchers.define(
           format === actual
         }
     })
-
