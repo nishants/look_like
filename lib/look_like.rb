@@ -10,7 +10,7 @@ module LookLike
 
     def self.find(keyword)
       @@matchers.find { |matcher|
-        matcher.select(keyword)
+        matcher.apply(keyword)
       }
     end
 

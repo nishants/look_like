@@ -19,7 +19,7 @@ module LookLike
       @matcher.call(actual, expected)
     end
 
-    def select(key)
+    def apply(key)
       @selector.call(key)
     end
 
