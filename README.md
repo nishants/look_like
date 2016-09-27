@@ -1,8 +1,8 @@
 # look_like matcher
-This gem is a collection of rspec matchers, for writing wireframe tests.
-These are useful for writing sanity tests in higher environments where we cannot control the data consumed by an app.
-This can also be used in a production environment.
-You can reuse your code/specs for regression tests.  
+- This gem is a collection of rspec matchers, for writing wireframe tests.
+- Such tests search for visual clues for detecting presence of a bug.
+- Useful for writing sanity tests in higher environments, e.g. testing your fresh deploy to production.
+- These can reuse your code for regression tests.  
 
 ## Installation
 
@@ -14,10 +14,11 @@ gem 'look_like'
 
 And then execute:
 
-    $ bundle install
+```bash
+$ bundle install
+```
 
 ## Usage
-Following will result in error : 
 ```ruby
 it "single word is different than two words" do
     expect("Sam").to look_like("Sam Dam")
@@ -40,6 +41,24 @@ LookLike::Matchers.define({
                           })
 ```
 
+
+## Writing wireframe tests
+In your feature file, define how your table should look like (visually) : 
+```gherkin
+Scenario: View employees detail table
+  Given I am an admin
+  Then  I should see employees table like
+        |FirstName  |LastName   |  Salary   |Email  |
+        |Magan      |Sharma     |  $200,00  |a@b.com|
+```
+
+In your steps, get table rows as array of array
+```ruby
+Then(/^I should see employees table like:$/) do |table_definition|
+  table = homepage.open.employee_table
+  expect(table).to look_like(table_definition)
+end
+```
 
 ## Development
 
