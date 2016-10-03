@@ -16,11 +16,38 @@ describe "look_like" do
     expect(nil).not_to look_like("Sam")
     expect(nil).not_to look_like("1")
     expect(nil).not_to look_like("$500,00")
-    expect(nil).not_to look_like(1)
     expect(nil).not_to look_like("cat climbed wall")
     expect(nil).not_to look_like("<:L#$%WRGSDF")
     expect(nil).not_to look_like("user@mailer.com")
     expect(nil).not_to look_like("http://hello.bolo.com")
+  end
+
+  it "should allow optional fields to be nil" do
+    expect(nil).to look_like("Sam*")
+    expect(nil).to look_like("1*")
+    expect(nil).to look_like("$500,00*")
+    expect(nil).to look_like("cat climbed wall*")
+    expect(nil).to look_like("<:L#$%WRGSDF*")
+    expect(nil).to look_like("user@mailer.com*")
+    expect(nil).to look_like("http://hello.bolo.com*")
+  end
+
+  it "should allow optional fields to be empty" do
+    expect("").to look_like("Sam*")
+    expect("").to look_like("1*")
+    expect("").to look_like("$500,00*")
+    expect("").to look_like("cat climbed wall*")
+    expect("").to look_like("<:L#$%WRGSDF*")
+    expect("").to look_like("user@mailer.com*")
+    expect("").to look_like("http://hello.bolo.com*")
+
+    expect("  ").to look_like("Sam*")
+    expect("  ").to look_like("1*")
+    expect("  ").to look_like("$500,00*")
+    expect("  ").to look_like("cat climbed wall*")
+    expect("  ").to look_like("<:L#$%WRGSDF*")
+    expect("  ").to look_like("user@mailer.com*")
+    expect(" ").to look_like("http://hello.bolo.com*")
   end
 
 end
