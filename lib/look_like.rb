@@ -1,4 +1,5 @@
 require "look_like/version"
+require "look_like/matcher"
 require "look_like/matchers"
 require "look_like/rspec-matcher"
 require "look_like/matcher-support"
