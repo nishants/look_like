@@ -3,11 +3,14 @@ LookLike::Matchers.define(
         :name     => :fomatted_amount,
         :desc     => "formatted amount",
         :select   => lambda{|keyword|
-          LookLike::MatcherSupport.is_amount(keyword)|| keyword.end_with?("amount")
+          keyword.end_with?("amount") || LookLike::MatcherSupport.is_amount(keyword)
         },
         :match    => lambda{|actual, expected|
           currency = LookLike::MatcherSupport.currency_of(expected)
-          LookLike::MatcherSupport.is_amount(actual.sub("$", "x").sub(currency, "$"))
+          unless currency == "$"
+            actual = actual.sub("$", "x").sub(currency, "$")
+          end
+          LookLike::MatcherSupport.is_amount(actual)
         }
     })
 

@@ -64,6 +64,7 @@ describe "look_like" do
 
   it "should support amount in dollars" do
     expect("$53,23,1").to look_like("$amount")
+    expect("$53,23,1.00").to look_like("$amount")
     expect("$53231").to look_like("$amount")
     expect("4232").not_to look_like("$amount")
     expect("4,232").not_to look_like("$amount")
@@ -73,6 +74,7 @@ describe "look_like" do
 
   it "should support all currencies" do
     expect("£53,23,1").to look_like("£amount")
+    expect("£53,23,1.00").to look_like("£amount")
     expect("£53,23,1").not_to look_like("$amount")
     expect("$53,23,1").not_to look_like("£amount")
   end

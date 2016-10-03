@@ -14,7 +14,8 @@ module LookLike
     end
 
     def self.is_amount(string)
-      /^\$[\d,]+\d$/ === string
+      rounded = string.sub(".", ",")
+      /^\$[\d,]+\d$/ === rounded
     end
 
     def self.is_loose_url(string)
