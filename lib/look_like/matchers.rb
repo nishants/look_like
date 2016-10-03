@@ -7,42 +7,11 @@ module LookLike
     end
 
     def self.find(expected)
-      @@matchers.find { |matcher| matcher.select(expected) }
-    end
-
-    def self.match_element(actual, expected)
-      optionally_empty     = expected.is_a?(String) && expected.end_with?("*") && (actual.nil? || actual.strip.eql?(""))
-      expected             = expected.is_a?(String) ? expected.sub("*", "").strip : expected
-      expected_and_correct = actual && find(expected).match(actual, expected)
-      optionally_empty || expected_and_correct
-    end
-
-    def self.match_array(actualArray, expectedArray)
-      matches = expectedArray.length == actualArray.length
-      actualArray.each_with_index { |actual, index|
-        expected = expectedArray[index]
-        matches = matches && match_element(actual, expected)
-      }
-      matches
-    end
-
-    def self.match_array_of_array(actualSuperArray, expectedArray)
-      matches = true
-      actualSuperArray.each_with_index { |actualArray|
-        matches = matches && match_array(actualArray, expectedArray)
-      }
-      matches
+      expected.is_a?(Array) ? LookLike::ArrayMatcher.new(@@matchers) : @@matchers.find { |matcher| matcher.select(expected) }
     end
 
     def self.match(actual, expected)
-      if(expected.is_a?(Array))
-        if(actual.length > 0 && actual[0].is_a?(Array))
-          return match_array_of_array(actual, expected)
-        end
-        return match_array(actual, expected)
-      end
-
-      match_element(actual, expected)
+      find(expected).match(actual, expected)
     end
 
     def self.array_error(actualArray, expectedArray)
@@ -55,7 +24,7 @@ module LookLike
       end
       actualArray.each_with_index { |actual, index|
         expected = expectedArray[index]
-        message.push(match_element(actual, expected) ? "Okay" : "#{find(expected).error(actual, expected)}")
+        message.push(find(expected).match(actual, expected) ? "Okay" : "#{find(expected).error(actual, expected)}")
       }
       "[#{message.join(", ")}]"
     end

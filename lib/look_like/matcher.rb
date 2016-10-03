@@ -22,11 +22,13 @@ module LookLike
     end
 
     def match(actual, expected)
-      @matcher.parameters.length == 2 ? @matcher.call(actual, expected) : @matcher.call(actual);
+      optionally_empty     = expected.is_a?(String) && expected.end_with?("*") && (actual.nil? || actual.strip.eql?(""))
+      expected             = expected.is_a?(String) ? expected.sub("*", "").strip : expected
+      optionally_empty || !actual.nil? && (@matcher.parameters.length == 2 ? @matcher.call(actual, expected) : @matcher.call(actual))
     end
 
     def select(expected)
-      @selector.call(expected)
+      @selector.call(expected.sub("*", "").strip)
     end
 
   end
