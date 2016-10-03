@@ -1,6 +1,16 @@
 
 module LookLike
-  class Matcher
+  class Matchers
+    @@matchers = []
+
+    def self.define(config)
+      @@matchers.push(LookLike::Matchers.new(config))
+    end
+
+    def self.find(keyword)
+      @@matchers.find { |matcher| matcher.apply(keyword) }
+    end
+
     attr_accessor :name
     attr_accessor :desc
     attr_accessor :select
