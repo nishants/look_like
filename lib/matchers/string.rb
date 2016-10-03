@@ -1,13 +1,13 @@
 LookLike::Matchers.define(
     {
-        :name     => :one_word,
-        :desc     => "one word",
-        :priority => 7,
+        :name     => :string,
+        :desc     => "string",
+        :priority => LookLike::Matchers.NORMAL_PRIORITY,
         :select   => lambda{|keyword|
           LookLike::MatcherSupport.count_words(keyword) == 1
         },
         :match    => lambda{|actual|
-          LookLike::MatcherSupport.count_words(actual) == 1
+          actual.strip.length > 0
         }
     })
 

@@ -19,6 +19,10 @@ module LookLike
       Dir[File.expand_path(File.join(File.dirname(File.absolute_path(__FILE__)), "matchers")) + "/**/*.rb"].each { |file| require file }
     end
 
+    def self.NORMAL_PRIORITY
+      5
+    end
+
   end
 end
 
