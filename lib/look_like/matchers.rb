@@ -11,8 +11,8 @@ module LookLike
     end
 
     def self.match_element(actual, expected)
-      optionally_empty     = expected.end_with?("*") && (actual.nil? || actual.strip.eql?(""))
-      expected             = expected.sub("*", "").strip
+      optionally_empty     = expected.is_a?(String) && expected.end_with?("*") && (actual.nil? || actual.strip.eql?(""))
+      expected             = expected.is_a?(String) ? expected.sub("*", "").strip : expected
       expected_and_correct = actual && find(expected).match(actual, expected)
       optionally_empty || expected_and_correct
     end
@@ -23,12 +23,26 @@ module LookLike
         expected = expectedArray[index]
         matches = matches && match_element(actual, expected)
       }
-      return matches
+      matches
     end
 
+    def self.match_array_of_array(actualSuperArray, expectedArray)
+      matches = true
+      actualSuperArray.each_with_index { |actualArray|
+        matches = matches && match_array(actualArray, expectedArray)
+      }
+      matches
+    end
 
     def self.match(actual, expected)
-      expected.is_a?(Array) ? match_array(actual, expected) : match_element(actual, expected)
+      if(expected.is_a?(Array))
+        if(actual.length > 0 && actual[0].is_a?(Array))
+          return match_array_of_array(actual, expected)
+        end
+        return match_array(actual, expected)
+      end
+
+      match_element(actual, expected)
     end
 
     def self.array_error(actualArray, expectedArray)

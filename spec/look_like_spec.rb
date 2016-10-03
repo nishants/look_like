@@ -145,4 +145,14 @@ describe "look_like" do
     expect(["one@two.xyz", "a@b.com", "₹300,20", "http://google.com", "", ""]).not_to look_like(["email*", "email", "₹amount", "url", "$amount*", "*", ""])
   end
 
+  it "should support matchers for arrays of arrays" do
+    super_array = [["one@two.xyz",    "₹300,20"],
+                   ["two@three.com",  ""],
+                   ["one@two.xyz",    "₹300,20"]]
+
+    expect(super_array).to look_like(["email", "₹amount*"])
+    expect([["one@two.xyz", "₹300,20"]]).to look_like(["email", "₹amount"])
+    expect([["one@two.xyz"]]).not_to look_like(["email", "₹amount"])
+  end
+
 end
