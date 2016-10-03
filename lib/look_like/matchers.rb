@@ -4,7 +4,7 @@ module LookLike
     @@matchers = []
 
     def self.define(config)
-      @@matchers.push(LookLike::Matchers.new(config))
+      @@matchers.unshift(LookLike::Matchers.new(config))
     end
 
     def self.find(keyword)
