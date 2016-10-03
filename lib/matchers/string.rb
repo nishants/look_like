@@ -2,9 +2,9 @@ LookLike::Matchers.define(
     {
         :name     => :string,
         :desc     => "string",
-        :priority => LookLike::Matchers.NORMAL_PRIORITY,
+        :priority => 10,
         :select   => lambda{|keyword|
-          LookLike::MatcherSupport.count_words(keyword) == 1
+          keyword.strip.length > 0
         },
         :match    => lambda{|actual|
           actual.strip.length > 0

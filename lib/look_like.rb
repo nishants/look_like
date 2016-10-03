@@ -1,5 +1,7 @@
 require "look_like/version"
 require "look_like/matcher"
+require "look_like/rspec-matcher"
+require "look_like/matcher-support"
 
 module LookLike
   class Matchers
@@ -16,7 +18,12 @@ module LookLike
     end
 
     def self.load
-      Dir[File.expand_path(File.join(File.dirname(File.absolute_path(__FILE__)), "matchers")) + "/**/*.rb"].each { |file| require file }
+      require "matchers/number"
+      require "matchers/string"
+      require "matchers/formatted-dollars"
+      require "matchers/formatted-number"
+      require "matchers/regex"
+      require "matchers/url"
     end
 
     def self.NORMAL_PRIORITY
