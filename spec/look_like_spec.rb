@@ -49,6 +49,7 @@ describe "look_like" do
     expect("  ").to look_like("user@mailer.com*")
     expect(" ").to look_like("http://hello.bolo.com*")
   end
+
   it "should match strings" do
     expect("Sam").to look_like("string")
     expect("Sam Dam").to look_like("string")

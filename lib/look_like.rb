@@ -6,14 +6,13 @@ require "look_like/matcher-support"
 module LookLike
   class Matchers
     @@matchers = []
+
     def self.define(config)
       @@matchers.push(LookLike::Matcher.new(config))
     end
 
     def self.find(keyword)
-      @@matchers.find { |matcher|
-        matcher.apply(keyword)
-      }
+      @@matchers.find { |matcher| matcher.apply(keyword) }
     end
 
     def self.load
@@ -23,10 +22,6 @@ module LookLike
       require "look_like/matchers/regex"
       require "look_like/matchers/url"
       require "look_like/matchers/string"
-    end
-
-    def self.NORMAL_PRIORITY
-      5
     end
 
   end
