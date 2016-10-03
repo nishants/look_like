@@ -9,6 +9,10 @@ module LookLike
       !!(string =~ /\A#{URI::regexp}\z/)
     end
 
+    def self.is_amount(string)
+      /^\$[\d,]+\d$/ === string
+    end
+
     def self.is_loose_url(string)
       if(string.strip.length && string.include?("."))
         string = "http://" + string

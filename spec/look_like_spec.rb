@@ -20,6 +20,7 @@ describe "look_like" do
     expect(nil).not_to look_like("<:L#$%WRGSDF")
     expect(nil).not_to look_like("user@mailer.com")
     expect(nil).not_to look_like("http://hello.bolo.com")
+    expect(nil).not_to look_like("$amount")
   end
 
   it "should allow optional fields to be nil" do
@@ -30,6 +31,7 @@ describe "look_like" do
     expect(nil).to look_like("<:L#$%WRGSDF*")
     expect(nil).to look_like("user@mailer.com*")
     expect(nil).to look_like("http://hello.bolo.com*")
+    expect(nil).to look_like("$amount*")
   end
 
   it "should allow optional fields to be empty" do
@@ -40,6 +42,8 @@ describe "look_like" do
     expect("").to look_like("<:L#$%WRGSDF*")
     expect("").to look_like("user@mailer.com*")
     expect("").to look_like("http://hello.bolo.com*")
+    expect("").to look_like("$amount*")
+
 
     expect("  ").to look_like("Sam*")
     expect("  ").to look_like("1*")
@@ -48,6 +52,7 @@ describe "look_like" do
     expect("  ").to look_like("<:L#$%WRGSDF*")
     expect("  ").to look_like("user@mailer.com*")
     expect(" ").to look_like("http://hello.bolo.com*")
+    expect("  ").to look_like("$amount*")
   end
 
   it "should match strings" do
@@ -55,6 +60,25 @@ describe "look_like" do
     expect("Sam Dam").to look_like("string")
     expect("Some sentence. \n With multiple lines").to look_like("string")
     expect("").not_to look_like("string")
+  end
+
+  it "should support amount in dollars" do
+    expect("$53,23,1").to look_like("$amount")
+    expect("$53231").to look_like("$amount")
+    expect("4232").not_to look_like("$amount")
+    expect("4,232").not_to look_like("$amount")
+    expect("").not_to look_like("$amount")
+    expect(nil).not_to look_like("$amount")
+  end
+
+  it "should support all currencies" do
+    # expect("£53,23,1").to look_like("£amount")
+  end
+
+  it "should support formatted number with dollar sign" do
+    expect("$53,23,1").to look_like("$5,000")
+    expect("53,23,1").not_to look_like("$5,000")
+    expect("$53,23,1").not_to look_like("5,000")
   end
 
 end

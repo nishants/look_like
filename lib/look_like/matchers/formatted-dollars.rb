@@ -1,13 +1,12 @@
-format = /^\$[\d,]+\d$/
 LookLike::Matchers.define(
     {
         :name     => :fomatted_dollars,
         :desc     => "formatted dollars",
         :select   => lambda{|keyword|
-          format === keyword
+          LookLike::MatcherSupport.is_amount(keyword)|| keyword.end_with?("amount")
         },
         :match    => lambda{|actual|
-          format === actual
+          LookLike::MatcherSupport.is_amount(actual)
         }
     })
 
