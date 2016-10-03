@@ -20,7 +20,26 @@ describe LookLike::MatcherSupport do
     expect(LookLike::MatcherSupport.is_enum("/c/vdsds")).to equal(false)
     expect(LookLike::MatcherSupport.is_enum("/c/vdsds/")).to equal(false)
   end
+
   it "parse enum values" do
+    expect(LookLike::MatcherSupport.enum_values("a/b")).to eq(["a", "b"])
+    expect(LookLike::MatcherSupport.enum_values("one/two/three")).to eq(["one", "two", "three"])
+  end
+
+  it "should validate emails" do
+
+    expect(LookLike::MatcherSupport.is_email "one@two.com").to equal(true)
+    expect(LookLike::MatcherSupport.is_email "one@two.xyz").to equal(true)
+    expect(LookLike::MatcherSupport.is_email "one.abs-absd@two.com").to equal(true)
+
+    expect(LookLike::MatcherSupport.is_email "one.abs/absd@two.com").to equal(false)
+    expect(LookLike::MatcherSupport.is_email "one.abs\absd@two.com").to equal(false)
+
+    expect(LookLike::MatcherSupport.is_email "").to equal(false)
+    expect(LookLike::MatcherSupport.is_email "  ").to equal(false)
+    expect(LookLike::MatcherSupport.is_email "abc.com").to equal(false)
+    expect(LookLike::MatcherSupport.is_email "abc.xyz").to equal(false)
+
     expect(LookLike::MatcherSupport.enum_values("a/b")).to eq(["a", "b"])
     expect(LookLike::MatcherSupport.enum_values("one/two/three")).to eq(["one", "two", "three"])
   end

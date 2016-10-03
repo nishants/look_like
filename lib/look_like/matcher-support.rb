@@ -33,5 +33,9 @@ module LookLike
       list.split("/").map{|value| value.strip()}
     end
 
+    def self.is_email(string)
+      string.include?("@") && !string.include?("/")  && is_loose_url(string)
+    end
+
   end
 end
