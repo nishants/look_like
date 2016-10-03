@@ -59,6 +59,7 @@ describe "look_like" do
   it "should match strings" do
     expect("Sam").to look_like("string*")
     expect("Sam").to look_like("string")
+
     expect("Sam Dam").to look_like("string")
     expect("Some sentence. \n With multiple lines").to look_like("string")
     expect("").not_to look_like("string")
@@ -116,12 +117,12 @@ describe "look_like" do
   end
 
   it "should support email" do
-    # expect("one@two.xyz").to look_like("email*")
-    # expect("one@two.xyz").to look_like("email")
-    # expect("one@two.xyz").to look_like("one@two.xyz")
-    #
-    # expect("one.abs/absd@two.com").not_to look_like("email")
-    # expect("one.abs\absd@two.com").not_to look_like("one@two.xyz")
+    expect("one@two.xyz").to look_like("email*")
+    expect("one@two.xyz").to look_like("email")
+    expect("one@two.xyz").to look_like("one@two.xyz")
+
+    expect("one.abs/absd@two.com").not_to look_like("email")
+    expect("one.abs\absd@two.com").not_to look_like("one@two.xyz")
 
     expect("one.abs/absd@two.com").not_to look_like("email*")
     expect("one.abs\absd@two.com").not_to look_like("one@two.xyz*")
@@ -141,18 +142,18 @@ describe "look_like" do
   end
 
   it "should support matchers for arrays" do
-    expect(["one@two.xyz", "a@b.com", "₹300,20", "http://google.com", "", "", ""]).to look_like(["email*", "email", "₹amount", "url", "$amount*", "*", ""])
+    expect(["one@two.xyz", "a@b.com", "₹300,20", "http://google.com", "", "yes","" , ""]).to look_like(["email*", "email", "₹amount", "url", "$amount*", "yes/no","*", ""])
     expect(["one@two.xyz", "a@b.com", "₹300,20", "http://google.com", "", ""]).not_to look_like(["email*", "email", "₹amount", "url", "$amount*", "*", ""])
   end
 
   it "should support matchers for arrays of arrays" do
-    super_array = [["one@two.xyz",    "₹300,20"],
-                   ["two@three.com",  ""],
-                   ["one@two.xyz",    "₹300,20"]]
+    rows     = [ ["one@two.xyz",    "₹300,20", "yes"],
+                 ["two@three.com",  "₹301,20", "no" ],
+                 ["one@two.xyz",    "₹121,20", ""   ]]
 
-    expect(super_array).to look_like(["email", "₹amount*"])
-    expect([["one@two.xyz", "₹300,20"]]).to look_like(["email", "₹amount"])
-    expect([["one@two.xyz"]]).not_to look_like(["email", "₹amount"])
+    matchers = [["email", "₹amount", "yes/no*"]]
+
+    expect(rows).to look_like(matchers)
   end
 
 end

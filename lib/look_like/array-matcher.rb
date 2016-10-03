@@ -6,36 +6,61 @@ module LookLike
     end
 
 
+    def element_error(actual, expected)
+      @matchers.find { |matcher| matcher.select(expected) }.error(actual, expected)
+    end
+
+
     def match_element(actual, expected)
       @matchers.find { |matcher| matcher.select(expected) }.match(actual, expected)
     end
 
-    def match(actualArray, expectedArray)
-      if(actualArray.length > 0 && actualArray[0].is_a?(Array))
-        return match_array_of_array(actualArray, expectedArray)
-      end
-      match_array(actualArray, expectedArray)
+    def match(actual_array, expected_array)
+      match_array(actual_array, expected_array)
     end
 
-    def match_array(actualArray, expectedArray)
-      matches = expectedArray.length == actualArray.length
-      actualArray.each_with_index { |actual, index|
-        expected = expectedArray[index]
+    def match_array(actual_array, expected_array)
+      matches = expected_array.length == actual_array.length
+      actual_array.each_with_index { |actual, index|
+        expected = expected_array[index]
         matches = matches && match_element(actual, expected)
       }
       matches
     end
 
-    def match_array_of_array(actualSuperArray, expectedArray)
+    def match_array_of_array(actual_super_array, expected_array)
       matches = true
-      actualSuperArray.each_with_index { |actualArray|
-        matches = matches && match_array(actualArray, expectedArray)
+      actual_super_array.each_with_index { |actual_array|
+        matches = matches && match_array(actual_array, expected_array)
       }
       matches
     end
 
     def select(expected)
       expected.is_a? Array
+    end
+
+    def error(actual_array, expected_array)
+      array_error(actual_array, expected_array)
+    end
+
+    def array_error(actual_array, expected_array)
+      message = []
+      if (expected_array.length > actual_array.length)
+        message.push("Expected #{ expected_array.length } elements, but found #{actual_array.length}.")
+        message.push("Expected : [#{ expected_array.join(", ") }]")
+        message.push("Found    : [#{ actual_array.join(", ") }]")
+        return message.join("\n")
+      end
+      actual_array.each_with_index { |actual, index|
+        expected = expected_array[index]
+        message.push(match_element(actual, expected) ? "✓" : "x [#{element_error(actual, expected)}]")
+      }
+      "[#{message.join(", ")}]"
+    end
+
+    def negate_error(actual, expected)
+      "#{"Expected not to match." + error(actual, expected)}"
     end
 
   end

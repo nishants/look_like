@@ -3,6 +3,8 @@
 - Such tests search for visual clues for detecting presence of a bug.
 - Useful for writing sanity tests in higher environments, e.g. testing your fresh deploy to production.
 - These can reuse your code for regression tests.  
+- Meaningful assertion reports help in quick diagnosis of faults. 
+- For example you can write test for fresh deployments to make sure the currency and language are correct by domain/user. 
 
 ## Installation
 
