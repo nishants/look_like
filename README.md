@@ -35,7 +35,7 @@ end
 LookLike::Matchers.define({
                               :name     => :single_word,
                               :desc     => "single word",
-                              :select   => lambda{|keyword|},
+                              :select   => lambda{|expected|},
                               :match    => lambda{|actual, expected|} 
                           })
 ```

@@ -2,11 +2,7 @@ LookLike::Matchers.define(
     {
         :name     => :email,
         :desc     => "email",
-        :select   => lambda{|selector|
-          selector.eql?("email") || LookLike::MatcherSupport.is_email(selector)
-        },
-        :match    => lambda{|actual|
-          LookLike::MatcherSupport.is_email(actual)
-        }
+        :select   => lambda{|expected| expected.eql?("email") || LookLike::Support.email?(expected) },
+        :match    => lambda{|actual| LookLike::Support.email?(actual) }
     })
 

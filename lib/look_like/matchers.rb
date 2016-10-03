@@ -6,8 +6,8 @@ module LookLike
       @@matchers.unshift(LookLike::Matcher.new(config))
     end
 
-    def self.find(keyword)
-      @@matchers.find { |matcher| matcher.apply(keyword) }
+    def self.find(expected)
+      @@matchers.find { |matcher| matcher.select(expected) }
     end
   end
 

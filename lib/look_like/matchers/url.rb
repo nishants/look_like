@@ -4,10 +4,8 @@ LookLike::Matchers.define(
     {
         :name     => :url,
         :desc     => "url",
-        :select   => lambda { |keyword|
-          LookLike::MatcherSupport.is_url(keyword)
-        },
+        :select   => lambda { |expected| LookLike::Support.url?(expected) },
         :match    => lambda { |actual|
-          LookLike::MatcherSupport.is_url(actual) || LookLike::MatcherSupport.is_loose_url(actual)
+          LookLike::Support.url?(actual) || LookLike::Support.loose_url?(actual)
         }
     })

@@ -1,24 +1,21 @@
 require "uri"
 module LookLike
-  class MatcherSupport
-    def self.count_words(string)
-      string.strip.split(" ").length
-    end
+  class Support
 
-    def self.is_url(string)
+    def self.url?(string)
       !!(string =~ /\A#{URI::regexp}\z/)
     end
 
-    def self.is_amount(string)
+    def self.amount?(string)
       rounded = string.sub(".", ",").strip
       /^\$[\s]*[\d,]+\d$/ === rounded
     end
 
-    def self.is_enum(string)
+    def self.enum?(string)
       /^[^\/]+[\/][^\/]/ === string
     end
 
-    def self.is_loose_url(string)
+    def self.loose_url?(string)
       if(string.strip.length && string.include?("."))
         string = "http://" + string
       end
@@ -33,8 +30,8 @@ module LookLike
       list.split("/").map{|value| value.strip()}
     end
 
-    def self.is_email(string)
-      string.include?("@") && !string.include?("/")  && is_loose_url(string)
+    def self.email?(string)
+      string.include?("@") && !string.include?("/")  && loose_url?(string)
     end
 
   end
