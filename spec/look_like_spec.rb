@@ -72,7 +72,9 @@ describe "look_like" do
   end
 
   it "should support all currencies" do
-    # expect("£53,23,1").to look_like("£amount")
+    expect("£53,23,1").to look_like("£amount")
+    expect("£53,23,1").not_to look_like("$amount")
+    expect("$53,23,1").not_to look_like("£amount")
   end
 
   it "should support formatted number with dollar sign" do

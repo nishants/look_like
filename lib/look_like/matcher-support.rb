@@ -9,6 +9,10 @@ module LookLike
       !!(string =~ /\A#{URI::regexp}\z/)
     end
 
+    def self.is_amount_sign(string)
+      /^\$[\d,]+\d$/ === string
+    end
+
     def self.is_amount(string)
       /^\$[\d,]+\d$/ === string
     end
@@ -18,6 +22,10 @@ module LookLike
         string = "http://" + string
       end
       !!(string =~ /\A#{URI::regexp}\z/)
+    end
+
+    def self.currency_of(amount)
+      amount.end_with?("amount") ? amount.split("amount")[0].strip :  amount[/^[^\d]+/].strip
     end
 
   end

@@ -5,7 +5,7 @@ require "look_like/matcher-support"
 
 
 require "look_like/matchers/number"
-require "look_like/matchers/formatted-dollars"
+require "look_like/matchers/formatted-amount"
 require "look_like/matchers/formatted-number"
 require "look_like/matchers/regex"
 require "look_like/matchers/url"
