@@ -4,6 +4,7 @@ require "look_like/matchers"
 require "look_like/rspec-matcher"
 require "look_like/support"
 
+require "look_like/matchers/any-value"
 require "look_like/matchers/string"
 require "look_like/matchers/email"
 require "look_like/matchers/enum"

@@ -2,7 +2,9 @@ LookLike::Matchers.define(
     {
         :name     => :amount,
         :desc     => "amount",
-        :select   => lambda{|expected| expected.end_with?("amount") || LookLike::Support.amount?(expected) },
+        :select   => lambda{|expected|
+          expected.end_with?("amount") || LookLike::Support.amount?(expected)
+        },
         :match    => lambda{|actual, expected|
           currency = LookLike::Support.currency_of(expected)
           unless currency == "$"

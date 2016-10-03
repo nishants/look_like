@@ -134,4 +134,14 @@ describe "look_like" do
     expect("").not_to look_like("email")
   end
 
+  it "should support wildcard : *" do
+    expect("").to look_like("*")
+    expect(nil).to look_like("*")
+    expect("one.abs\absd@two.com").to look_like("*")
+  end
+
+  it "should support matchers for arrays" do
+    expect(["one@two.xyz", "a@b.com", "₹300,20", "http://google.com", "", "", ""]).to look_like(["email*", "email", "₹amount", "url", "$amount*", "*", ""])
+  end
+
 end
