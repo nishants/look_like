@@ -142,6 +142,7 @@ describe "look_like" do
 
   it "should support matchers for arrays" do
     expect(["one@two.xyz", "a@b.com", "₹300,20", "http://google.com", "", "", ""]).to look_like(["email*", "email", "₹amount", "url", "$amount*", "*", ""])
+    expect(["one@two.xyz", "a@b.com", "₹300,20", "http://google.com", "", ""]).not_to look_like(["email*", "email", "₹amount", "url", "$amount*", "*", ""])
   end
 
 end

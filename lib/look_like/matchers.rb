@@ -18,7 +18,7 @@ module LookLike
     end
 
     def self.match_array(actualArray, expectedArray)
-      matches = true
+      matches = expectedArray.length == actualArray.length
       actualArray.each_with_index { |actual, index|
         expected = expectedArray[index]
         matches = matches && match_element(actual, expected)
@@ -33,6 +33,12 @@ module LookLike
 
     def self.array_error(actualArray, expectedArray)
       message = []
+      if(expectedArray.length > actualArray.length)
+        message.push("Expected #{ expectedArray.length } elements, but found #{actualArray.length}.")
+        message.push("Expected : [#{ expectedArray.join(", ") }]")
+        message.push("Found    : [#{ actualArray.join(", ") }]")
+        return message.join("\n")
+      end
       actualArray.each_with_index { |actual, index|
         expected = expectedArray[index]
         message.push(match_element(actual, expected) ? "Okay" : "#{find(expected).error(actual, expected)}")
@@ -45,7 +51,7 @@ module LookLike
     end
 
     def self.negate_error(actual, expected)
-      find(expected).negate_error(actual, expected)
+      expected.is_a?(Array) ? array_error(actual, expected) : find(expected.sub("*", "").strip).negate_error(actual, expected)
     end
   end
 
