@@ -77,6 +77,8 @@ describe "look_like" do
     expect("£53,23,1.00").to look_like("£amount")
     expect("£53,23,1").not_to look_like("$amount")
     expect("$53,23,1").not_to look_like("£amount")
+    expect("$53,23,1").not_to look_like("INRamount")
+    expect("INR 53,23,1").to look_like("INRamount")
   end
 
   it "should support formatted number with dollar sign" do

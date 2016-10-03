@@ -29,7 +29,7 @@ module LookLike
     end
 
     def negate_error(actual, expected)
-      "Negation is not supported !" + "\n" + "Compared  \"#{actual}\" with \"#{expected}\" (#{@desc})"
+      "Expected     :\"#{actual}\" \nTo look like : \"#{expected}\" (#{@desc})"
     end
 
     def match(actual, expected)

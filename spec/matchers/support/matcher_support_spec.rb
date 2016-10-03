@@ -9,6 +9,8 @@ describe LookLike::MatcherSupport do
 
   it "should validate amounts" do
     expect(LookLike::MatcherSupport.is_amount("$53,23,1.00")).to equal(true)
+    expect(LookLike::MatcherSupport.is_amount("$ 53,23,1.00 ")).to equal(true)
+    expect(LookLike::MatcherSupport.is_amount("$ 53,23 ,1.00")).to equal(false)
   end
 
 end

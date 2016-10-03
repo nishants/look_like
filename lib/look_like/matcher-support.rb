@@ -9,13 +9,9 @@ module LookLike
       !!(string =~ /\A#{URI::regexp}\z/)
     end
 
-    def self.is_amount_sign(string)
-      /^\$[\d,]+\d$/ === string
-    end
-
     def self.is_amount(string)
-      rounded = string.sub(".", ",")
-      /^\$[\d,]+\d$/ === rounded
+      rounded = string.sub(".", ",").strip
+      /^\$[\s]*[\d,]+\d$/ === rounded
     end
 
     def self.is_loose_url(string)
