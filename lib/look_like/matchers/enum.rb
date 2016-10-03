@@ -1,7 +1,7 @@
 LookLike::Matchers.define(
     {
-        :name     => :list,
-        :desc     => "list",
+        :name     => :enum,
+        :desc     => "enum",
         :select   => lambda{|selector|
           LookLike::MatcherSupport.is_enum(selector)
         },

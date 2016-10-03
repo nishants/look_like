@@ -2,7 +2,7 @@ format = /^[\d]+$/
 LookLike::Matchers.define(
     {
         :name     => :number,
-        :desc     => "a number",
+        :desc     => "number",
         :select   => lambda{|keyword|
           format === keyword
         },

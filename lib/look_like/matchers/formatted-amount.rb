@@ -1,7 +1,7 @@
 LookLike::Matchers.define(
     {
-        :name     => :fomatted_amount,
-        :desc     => "formatted amount",
+        :name     => :amount,
+        :desc     => "amount",
         :select   => lambda{|keyword|
           keyword.end_with?("amount") || LookLike::MatcherSupport.is_amount(keyword)
         },

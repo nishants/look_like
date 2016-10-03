@@ -69,8 +69,12 @@ describe "look_like" do
     expect("$53,23,1").to look_like("$amount")
     expect("$53,23,1.00").to look_like("$amount")
     expect("$ 53,23,1.00").to look_like("$amount")
-    expect("$ 53,23, 1.00").not_to look_like("$amount")
+
     expect("$53231").to look_like("$amount")
+
+    expect("$ 53,23, 1.00").not_to look_like("$amount")
+    expect("4232").not_to look_like("$amount*")
+
     expect("4232").not_to look_like("$amount")
     expect("4,232").not_to look_like("$amount")
     expect("").not_to look_like("$amount")
@@ -81,7 +85,10 @@ describe "look_like" do
     expect("£53,23,1").to look_like("£amount*")
     expect("£53,23,1").to look_like("£amount")
     expect("£53,23,1.00").to look_like("£amount")
+
     expect("£53,23,1").not_to look_like("$amount")
+    expect("£53,23,1").not_to look_like("$amount*")
+
     expect("$53,23,1").not_to look_like("£amount")
     expect("$53,23,1").not_to look_like("INRamount")
     expect("INR 53,23,1").to look_like("INRamount")
@@ -116,8 +123,12 @@ describe "look_like" do
     expect("one.abs/absd@two.com").not_to look_like("email")
     expect("one.abs\absd@two.com").not_to look_like("one@two.xyz")
 
+    expect("one.abs/absd@two.com").not_to look_like("email*")
+    expect("one.abs\absd@two.com").not_to look_like("one@two.xyz*")
+
     expect("abc.xyz").not_to look_like("email")
-    expect("abc.xyz").not_to look_like("one@two.xyz")
+    expect("abc.xyz").not_to look_like("email*")
+    expect("abc.xyz").not_to look_like("one@two.xyz*")
 
     expect("hello").not_to look_like("email")
     expect("").not_to look_like("email")

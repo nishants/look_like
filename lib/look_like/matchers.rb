@@ -29,7 +29,7 @@ module LookLike
     end
 
     def negate_error(actual, expected)
-      "Expected     :\"#{actual}\" \nTo look like : \"#{expected}\" (#{@desc})"
+      "Did not expect    :\"#{actual}\" to look like  : \"#{expected}\" (#{@desc})"
     end
 
     def match(actual, expected)
