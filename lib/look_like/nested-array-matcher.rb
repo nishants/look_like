@@ -17,7 +17,7 @@ module LookLike
       message = []
       expected_array = expected[0]
       actual.each { |actual_array|
-        message.push(match_array(actual_array, expected_array) ? "✓" : "x [#{array_error(actual_array, expected_array)}]")
+        message.push(match_array(actual_array, expected_array) ? "✓" : "x [#{super(actual_array, expected_array)}]")
       }
       "[#{message.join(", ")}]"
     end

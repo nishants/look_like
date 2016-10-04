@@ -33,10 +33,6 @@ module LookLike
     end
 
     def error(actual_array, expected_array)
-      array_error(actual_array, expected_array)
-    end
-
-    def array_error(actual_array, expected_array)
       message = []
       if (expected_array.length > actual_array.length)
         message.push("Expected #{ expected_array.length } elements, but found #{actual_array.length}.")
