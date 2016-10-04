@@ -14,7 +14,7 @@
 gem 'look_like'
 ```
 
-- To your spec_helper(/test_helper), add following : 
+- To your spec_helper(/test_helper) or env.rb for cucumber, add following : 
 ```ruby
 require "look_like"
 ```
