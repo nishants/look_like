@@ -35,6 +35,8 @@ matchers = [["email", "₹amount", "yes/no*"]]
 
 expect(rows).to look_like(matchers)    
 ```
+
+Try matchers in browser here : http://amoeba.social/lab/try-look-like/
 ## Custom Matchers
 ```ruby
 
