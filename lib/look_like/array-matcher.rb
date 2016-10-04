@@ -28,14 +28,6 @@ module LookLike
       matches
     end
 
-    def match_array_of_array(actual_super_array, expected_array)
-      matches = true
-      actual_super_array.each_with_index { |actual_array|
-        matches = matches && match_array(actual_array, expected_array)
-      }
-      matches
-    end
-
     def select(expected)
       expected.is_a? Array
     end
