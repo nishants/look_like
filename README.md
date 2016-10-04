@@ -35,8 +35,8 @@ expect(rows).to look_like(matchers)
 ```ruby
 
 LookLike::Matchers.define({
-  :name     => :single_word,
-  :desc     => "single word",
+  :name     => :my_custom_matcher,
+  :desc     => "my custom matcher",
   :select   => lambda{|expected|
      # return true if this matcher must be used for given expectation.
   },
