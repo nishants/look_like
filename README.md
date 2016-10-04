@@ -45,7 +45,7 @@ LookLike::Matchers.define({
      # return true if this matcher must be used for given expectation.
   },
   :match    => lambda{|actual, expected|
-     # return true actual matches expected
+     # return true if actual matches expected
   } 
 })
 ```
