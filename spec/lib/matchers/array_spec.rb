@@ -16,4 +16,44 @@ describe "arrays" do
     expect(rows).to look_like(matchers)
   end
 
+  it "assertion error message for arrays" do
+    actual    = ["one@two.xyz",    "₹300,20", ""]
+    expected  = ["email", "₹amount", "yes/no"]
+
+    error    = LookLike::Matchers.error(actual, expected)
+    expect(error).to eq("[✓, ✓, x [\"\" does not look like \"yes/no\" (enum)]]")
+  end
+
+  it "negating assertion error message for arrays" do
+    actual    = ["one@two.xyz",    "₹300,20", ""]
+    expected  = ["email", "₹amount", "yes/no"]
+
+    error    = LookLike::Matchers.negate_error(actual, expected)
+    expect(error).to eq("Expected not to match.[✓, ✓, x [\"\" does not look like \"yes/no\" (enum)]]")
+  end
+
+  it "assertion error message for nested arrays" do
+    actual    = [["one@two.xyz",    "₹300,20", ""]]
+    expected  = [["email", "₹amount", "yes/no"]]
+
+    error    = LookLike::Matchers.error(actual, expected)
+    expect(error).to eq("[x [[✓, ✓, x [\"\" does not look like \"yes/no\" (enum)]]]]")
+  end
+
+  it "negating assertion error message for nested arrays" do
+    actual    = [["one@two.xyz",    "₹300,20", ""]]
+    expected  = [["email", "₹amount", "yes/no"]]
+
+    error    = LookLike::Matchers.negate_error(actual, expected)
+    expect(error).to eq("Expected not to match.[x [[✓, ✓, x [\"\" does not look like \"yes/no\" (enum)]]]]")
+  end
+
+  it "assertion error message for arrays length" do
+    actual    = [["one@two.xyz",    "₹300,20"]]
+    expected  = [["email", "₹amount", "yes/no*"]]
+
+    error    = LookLike::Matchers.error(actual, expected)
+    expect(error).to eq("[x [Expected 3 elements, but found 2.. Expected : [email, ₹amount, yes/no*]. Found    : [one@two.xyz, ₹300,20]]]")
+  end
+
 end

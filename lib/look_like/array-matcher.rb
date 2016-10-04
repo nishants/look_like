@@ -42,7 +42,7 @@ module LookLike
         message.push("Expected #{ expected_array.length } elements, but found #{actual_array.length}.")
         message.push("Expected : [#{ expected_array.join(", ") }]")
         message.push("Found    : [#{ actual_array.join(", ") }]")
-        return message.join("\n")
+        return message.join(". ")
       end
       actual_array.each_with_index { |actual, index|
         expected = expected_array[index]
