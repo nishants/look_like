@@ -48,21 +48,28 @@ LookLike::Matchers.define({
 Find examples of defining matchers here : https://github.com/nishants/look_like/tree/master/lib/look_like/matchers.
 
 
-## Writing wireframe tests
-In your feature file, define how your table should look like (visually) : 
+## Writing Wireframe Tests with Cucumber
+Suppose this is how an html table look like :
+
+| Name       | Email         | Commission | Enrolled | HomePage                                      |
+|------------|---------------|------------|----------|-----------------------------------------------|
+| User One   | user1@abc.com | $5,008.00  | yes      | https://www.facebook.com/profile.php?id=76273 |
+| User Two   | user2@abc.com | $493.00    | no       |                                               |
+| User Three | user3@abc.com | $8.00      | yes      | https://www.facebook.com/profile.php?id=76273 |
+
+In your feature file, define the table rows   
 ```gherkin
 Scenario: View employees detail table
   Given I am an admin
   Then  I should see employees table like
-        |FirstName  |LastName   |  Salary   |Email  |
-        |Magan      |Sharma     |  $200,00  |a@b.com|
+        |name      |email     |  $amount  | yes/no | url* |
 ```
 
 In your steps, get table rows as array of array
 ```ruby
-Then(/^I should see employees table like:$/) do |table_definition|
-  table = homepage.open.employee_table
-  expect(table).to look_like(table_definition)
+Then(/^I should see employees table like$/) do |definition|
+  rows = homepage.open.employee_table_rows
+  expect(rows).to look_like(definition.rows)
 end
 ```
 
