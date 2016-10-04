@@ -1,4 +1,4 @@
-# look_like matcher
+# look_like matcher  [![Build Status](https://travis-ci.org/nishants/look_like.svg?branch=master)](https://travis-ci.org/nishants/look_like)
 - This gem is a collection of rspec matchers, for writing wireframe tests.
 - Such tests search for visual clues for detecting presence of a bug.
 - Useful for writing sanity tests in higher environments, e.g. testing your fresh deploy to production.
