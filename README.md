@@ -23,25 +23,29 @@ $ bundle install
 
 ## Usage
 ```ruby
-it "single word is different than two words" do
-    expect("Sam").to look_like("Sam Dam")
-end
+rows     = [ ["one@two.xyz",    "₹300,20", "yes"],
+             ["two@three.com",  "₹301,20", "no" ],
+             ["one@two.xyz",    "₹121,20", ""   ]]
 
-# results in error
-# expected  "Sam" (one word), 
-# to look like "Sam Dam" (two words)
+matchers = [["email", "₹amount", "yes/no*"]]
 
+expect(rows).to look_like(matchers)    
 ```
 ## Custom Matchers
 ```ruby
 
 LookLike::Matchers.define({
-                              :name     => :single_word,
-                              :desc     => "single word",
-                              :select   => lambda{|expected|},
-                              :match    => lambda{|actual, expected|} 
-                          })
+  :name     => :single_word,
+  :desc     => "single word",
+  :select   => lambda{|expected|
+     # return true if this matcher must be used for given expectation.
+  },
+  :match    => lambda{|actual, expected|
+     # return true actual matches expected
+  } 
+})
 ```
+Find examples of defining matchers here : https://github.com/nishants/look_like/tree/master/lib/look_like/matchers.
 
 
 ## Writing wireframe tests
@@ -70,7 +74,7 @@ end
 - To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`
 - Release task  will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 - Build report : https://travis-ci.org/nishants/look_like
-- Coverage Repoprt : https://coveralls.io/github/nishants/look_like
+- Coverage report : https://coveralls.io/github/nishants/look_like
 
 ## Contributing
 - Report bugs or suggest improvements at https://github.com/nishants/look_like/issues.
