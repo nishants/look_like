@@ -9,14 +9,18 @@
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
+- Add this line to your application's Gemfile:
 ```ruby
 gem 'look_like'
 ```
 
-And then execute:
+- To your spec_helper(/test_helper), add following : 
+```ruby
+require "look_like"
+```
 
+
+- And then execute:
 ```bash
 $ bundle install
 ```
