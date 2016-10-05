@@ -6,6 +6,7 @@
 - These can reuse your code for regression tests.  
 - Meaningful assertion reports help in quick diagnosis of faults. 
 - For example you can write test for fresh deployments to make sure the currency and language are correct by domain/user. 
+- [Try online] (http://amoeba.social/lab/try-look-like/)
 
 ## Installation
 
@@ -36,7 +37,7 @@ matchers = [["email", "₹amount", "yes/no*"]]
 expect(rows).to look_like(matchers)    
 ```
 
-Try matchers in browser here : http://amoeba.social/lab/try-look-like/
+[Try matchers in browser here](http://amoeba.social/lab/try-look-like/)
 ## Custom Matchers
 ```ruby
 
@@ -51,7 +52,7 @@ LookLike::Matchers.define({
   } 
 })
 ```
-Find examples of defining matchers here : https://github.com/nishants/look_like/tree/master/lib/look_like/matchers.
+[Examples for defining matchers] (https://github.com/nishants/look_like/tree/master/lib/look_like/matchers.)
 
 
 ## Writing Wireframe Tests with Cucumber
