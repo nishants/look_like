@@ -56,7 +56,7 @@ LookLike::Matchers.define({
 
 
 ## Writing Wireframe Tests with Cucumber
-Suppose this is how an html table look like :
+- Suppose this is how an html table look like :
 
 | Name       | Email         | Commission | Enrolled | HomePage                                      |
 |------------|---------------|------------|----------|-----------------------------------------------|
@@ -64,7 +64,7 @@ Suppose this is how an html table look like :
 | User Two   | user2@abc.com | $493.00    | no       |                                               |
 | User Three | user3@abc.com | $8.00      | yes      | https://www.facebook.com/profile.php?id=76273 |
 
-In your feature file, define the table rows   
+- In your feature file, define the table rows   
 ```gherkin
 Scenario: View employees detail table
   Given I am an admin
@@ -72,7 +72,7 @@ Scenario: View employees detail table
         |name      |email     |  $amount  | yes/no | url* |
 ```
 
-In your steps, get table rows as array of array
+- In your steps, get table rows as array of array
 ```ruby
 Then(/^I should see employees table like$/) do |definition|
   rows = homepage.open.employee_table_rows
@@ -81,13 +81,13 @@ end
 ```
 
 ## List of Matchers
-### Email
+- **Email**
 ```ruby
 expect("one@two.xyz").to look_like("email")
 expect("one@two.xyz").to look_like("a@b.com")
 ```
 
-### Amount and Currency
+- **Amount and Currency**
 ```ruby
 expect("$53,23,1").to look_like("$amount")
 expect("₹23,1.00").to look_like("₹amount")
@@ -95,26 +95,26 @@ expect("$53,23,1").to look_like("$12.21")
 expect("₹23,1.00").to look_like("₹100.12")
 ```
 
-### Enums
+- **Enums**
 ```ruby
 expect("one").to look_like("one/two/three")
 expect("four").not_to look_like("one/two/three")
 ```
 
-### Regex
+- **Regex**
 ```ruby
 expect("i have  test").to look_like("/test/")
 expect("i have  tess").not_to look_like("/test/")
 ```
 
-### URL
+- **URL**
 ```ruby
 expect("google.com").to look_like("http://google.com")
 expect("http://google.com").to look_like("http://google.com")
 expect("google-com").not_to look_like("http://google.com")
 ```
 
-### Wildcard
+- **Wildcard**
 ```ruby
 expect("").to look_like("email*")
 expect("not.an.email").not_to look_like("email*")
@@ -126,7 +126,7 @@ expect("").to look_like("*")
 expect("any-thing").to look_like("*")
 ```
 
-### Numbers
+- **Numbers**
 ```ruby
 expect("6993").to look_like("number")
 expect("6993").to look_like("5000")
