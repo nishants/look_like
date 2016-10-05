@@ -52,7 +52,7 @@ LookLike::Matchers.define({
   } 
 })
 ```
-[Examples for defining matchers] (https://github.com/nishants/look_like/tree/master/lib/look_like/matchers.)
+[Examples for defining matchers] (https://github.com/nishants/look_like/tree/master/lib/look_like/matchers).
 
 
 ## Writing Wireframe Tests with Cucumber
