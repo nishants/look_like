@@ -5,6 +5,8 @@ describe "amount" do
   it "should support amount in dollars" do
     expect("$53,23,1").to look_like("$amount*")
     expect("$53,23,1").to look_like("$amount")
+    expect("₹23,1.00").to look_like("₹amount")
+
     expect("$53,23,1.00").to look_like("$amount")
     expect("$ 53,23,1.00").to look_like("$amount")
 
