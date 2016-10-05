@@ -91,6 +91,7 @@ expect("one@two.xyz").to look_like("a@b.com")
 ```ruby
 expect("$53,23,1").to look_like("$amount")
 expect("₹23,1.00").to look_like("₹amount")
+
 expect("$53,23,1").to look_like("$12.21")
 expect("₹23,1.00").to look_like("₹100.12")
 ```
@@ -128,7 +129,10 @@ expect("any-thing").to look_like("*")
 
 - **Numbers**
 ```ruby
-expect("6993").to look_like("number")
+expect("5000").to look_like("number")
+expect("5,000").to look_like("number")
+expect("5,43.11").to look_like("number")
+
 expect("6993").to look_like("5000")
 expect("5000").to look_like("5,000")
 expect("$5000").not_to look_like("5000")
