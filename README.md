@@ -117,7 +117,9 @@ expect("google-com").not_to look_like("http://google.com")
 ### Wildcard
 ```ruby
 expect("").to look_like("email*")
+expect("not.an.email").not_to look_like("email*")
 expect("one@two.xyz").to look_like("email*")
+
 expect("one@two.xyz").to look_like("a@b.com*")
 
 expect("").to look_like("*")
