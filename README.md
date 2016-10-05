@@ -80,6 +80,58 @@ Then(/^I should see employees table like$/) do |definition|
 end
 ```
 
+## List of Matchers
+### Email
+```ruby
+expect("one@two.xyz").to look_like("email")
+expect("one@two.xyz").to look_like("a@b.com")
+```
+
+### Amount and Currency
+```ruby
+expect("$53,23,1").to look_like("$amount")
+expect("₹23,1.00").to look_like("₹amount")
+expect("$53,23,1").to look_like("$12.21")
+expect("₹23,1.00").to look_like("₹100.12")
+```
+
+### Enums
+```ruby
+expect("one").to look_like("one/two/three")
+expect("four").not_to look_like("one/two/three")
+```
+
+### Regex
+```ruby
+expect("i have  test").to look_like("/test/")
+expect("i have  tess").not_to look_like("/test/")
+```
+
+### URL
+```ruby
+expect("google.com").to look_like("http://google.com")
+expect("http://google.com").to look_like("http://google.com")
+expect("google-com").not_to look_like("http://google.com")
+```
+
+### Wildcard
+```ruby
+expect("").to look_like("email*")
+expect("one@two.xyz").to look_like("email*")
+expect("one@two.xyz").to look_like("a@b.com*")
+
+expect("").to look_like("*")
+expect("any-thing").to look_like("*")
+```
+
+### Numbers
+```ruby
+expect("6993").to look_like("number")
+expect("6993").to look_like("5000")
+expect("5000").to look_like("5,000")
+expect("$5000").not_to look_like("5000")
+```
+
 ## Development
 - After checking out the repo, run `bin/setup` to install dependencies. 
 - Then, run `rake spec` to run the tests. 
