@@ -81,13 +81,13 @@ end
 ```
 
 ## List of Matchers
-- **Email**
+- [**Email**] (http://amoeba.social/lab/try-look-like/#/Email)
 ```ruby
 expect("one@two.xyz").to look_like("email")
 expect("one@two.xyz").to look_like("a@b.com")
 ```
 
-- **Amount and Currency**
+- [**Amount and Currency**](http://amoeba.social/lab/try-look-like/#/Amount%20and%20Currency)
 ```ruby
 expect("$53,23,1").to look_like("$amount")
 expect("₹23,1.00").to look_like("₹amount")
@@ -96,26 +96,26 @@ expect("$53,23,1").to look_like("$12.21")
 expect("₹23,1.00").to look_like("₹100.12")
 ```
 
-- **Enums**
+- [**Enums**](http://amoeba.social/lab/try-look-like/#/Enums)
 ```ruby
 expect("one").to look_like("one/two/three")
 expect("four").not_to look_like("one/two/three")
 ```
 
-- **Regex**
+- [**Regex**](http://amoeba.social/lab/try-look-like/#/Regex)
 ```ruby
 expect("i have  test").to look_like("/test/")
 expect("i have  tess").not_to look_like("/test/")
 ```
 
-- **URL**
+- [**URL**](http://amoeba.social/lab/try-look-like/#/URL)
 ```ruby
 expect("google.com").to look_like("http://google.com")
 expect("http://google.com").to look_like("http://google.com")
 expect("google-com").not_to look_like("http://google.com")
 ```
 
-- **Wildcard**
+- [**Wildcard**](http://amoeba.social/lab/try-look-like/#/Wildcard)
 ```ruby
 expect("").to look_like("email*")
 expect("not.an.email").not_to look_like("email*")
@@ -127,7 +127,7 @@ expect("").to look_like("*")
 expect("any-thing").to look_like("*")
 ```
 
-- **Numbers**
+- [**Numbers**](http://amoeba.social/lab/try-look-like/#/Numbers)
 ```ruby
 expect("5000").to look_like("number")
 expect("5,000").to look_like("number")
