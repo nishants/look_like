@@ -13,6 +13,6 @@ require "look_like/matchers/enum"
 require "look_like/matchers/url"
 require "look_like/matchers/regex"
 require "look_like/matchers/formatted-number"
-require "look_like/matchers/formatted-amount"
+require "look_like/matchers/amount"
 require "look_like/matchers/number"
 
