@@ -104,8 +104,9 @@ expect("four").not_to look_like("one/two/three")
 
 - [**Regex**](http://amoeba.social/lab/try-look-like/#/Regex)
 ```ruby
-expect("i have  test").to look_like("/test/")
-expect("i have  tess").not_to look_like("/test/")
+expect("1-12-1-2").to look_like("/[\\d\\-]+/")
+expect("$3.67").to look_like("/\\$(?<dollars>\\d+)\\.(?<cents>\\d+)/")
+expect("$367").not_to look_like("/\\$(?<dollars>\\d+)\\.(?<cents>\\d+)/")
 ```
 
 - [**URL**](http://amoeba.social/lab/try-look-like/#/URL)
