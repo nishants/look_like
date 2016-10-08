@@ -2,6 +2,9 @@ require "uri"
 module LookLike
   class Support
 
+    @@DATE_CHARS = /[DMYHS\d]/
+    @@DATE_STAMP_REGEX = /^[\/x]+$/
+
     def self.url?(string)
       !!(string =~ /\A#{URI::regexp}\z/)
     end
@@ -44,6 +47,14 @@ module LookLike
 
     def self.amount_def?(expected)
       amount?(expected.sub(/^[^\d]+/, "$"))
+    end
+
+    def self.date?(stamp)
+      @@DATE_STAMP_REGEX === stamp
+    end
+
+    def self.mask_date(stamp)
+      stamp.upcase.gsub(@@DATE_CHARS, "x")
     end
 
   end

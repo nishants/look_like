@@ -9,6 +9,15 @@ describe LookLike::Support do
     expect(LookLike::Support.amount?("53,23 ,1.00")).to equal(false)
   end
 
+  it "should mask date" do
+    expect(LookLike::Support.mask_date("12/23/1232")).to eq("xx/xx/xxxx")
+  end
+
+  it "should validate date" do
+    expect(LookLike::Support.date?("xx/xx/xxxx")).to eq(true)
+    expect(LookLike::Support.date?("ONE/TWO/TxREE")).to eq(false)
+  end
+
   it "should validate enums" do
     expect(LookLike::Support.enum?("a/b")).to equal(true)
     expect(LookLike::Support.enum?("a/bcs")).to equal(true)
