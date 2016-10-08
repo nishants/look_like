@@ -150,14 +150,14 @@ expect("2014-12-31 T 11:59:13").to look_like("YYYY-MM-DD T hh:mm:ss")
 expect("1994-11-05T08:15:30-05:00").to look_like("1994-11-05T08:15:30-05:00")
 ```
 
-- [**Arrays**](http://localhost:3001/2.0/lab/try-look-like/index.html#/Arrays)
+- [**Arrays**](http://amoeba.social/lab/try-look-like/index.html#/Arrays)
 ```ruby
 actual   = ["one@two.xyz",  "₹300,20", ""]
 expected = ["email"      , "₹amount" , "*"]
 expect(actual).to look_like(expected)
 ```
 
-- [**Rows**](http://localhost:3001/2.0/lab/try-look-like/index.html#/Rows)
+- [**Rows**](http://amoeba.social/lab/try-look-like/index.html#/Rows)
 ```ruby
 actual   = [["one@two.xyz"  ,  "₹300,20", "yes"],
             ["two@three.com",  "₹301,20", "no" ],
