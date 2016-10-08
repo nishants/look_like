@@ -6,7 +6,7 @@
 - These can reuse your code for regression tests.  
 - Meaningful assertion reports help in quick diagnosis of faults. 
 - For example you can write test for fresh deployments to make sure the currency and language are correct by domain/user. 
-- [Try online] (http://amoeba.social/lab/try-look-like/)
+- [Try online] (http://amoeba.social/lab/look-like/)
 
 ## Installation
 
@@ -37,7 +37,7 @@ expected = [["email", "₹amount", "yes/no*"]]
 expect(actual).to look_like(expected)  
 ```
 
-[Try online here](http://localhost:3001/2.0/lab/try-look-like/index.html#/Rows)
+[Try online here](http://localhost:3001/2.0/lab/look-like/index.html#/Rows)
 ## Custom Matchers
 ```ruby
 
@@ -81,13 +81,13 @@ end
 ```
 
 ## List of Matchers
-- [**Email**] (http://amoeba.social/lab/try-look-like/#/Email)
+- [**Email**] (http://amoeba.social/lab/look-like/#/Email)
 ```ruby
 expect("one@two.xyz").to look_like("email")
 expect("one@two.xyz").to look_like("a@b.com")
 ```
 
-- [**Amount and Currency**](http://amoeba.social/lab/try-look-like/#/Amount%20and%20Currency)
+- [**Amount and Currency**](http://amoeba.social/lab/look-like/#/Amount%20and%20Currency)
 ```ruby
 expect("$53,23,1").to look_like("$amount")
 expect("₹23,1.00").to look_like("₹amount")
@@ -96,27 +96,27 @@ expect("$53,23,1").to look_like("$12.21")
 expect("₹23,1.00").to look_like("₹100.12")
 ```
 
-- [**Enums**](http://amoeba.social/lab/try-look-like/#/Enums)
+- [**Enums**](http://amoeba.social/lab/look-like/#/Enums)
 ```ruby
 expect("one").to look_like("one/two/three")
 expect("four").not_to look_like("one/two/three")
 ```
 
-- [**Regex**](http://amoeba.social/lab/try-look-like/#/Regex)
+- [**Regex**](http://amoeba.social/lab/look-like/#/Regex)
 ```ruby
 expect("1-12-1-2").to look_like("/[\\d\\-]+/")
 expect("$3.67").to look_like("/\\$(?<dollars>\\d+)\\.(?<cents>\\d+)/")
 expect("$367").not_to look_like("/\\$(?<dollars>\\d+)\\.(?<cents>\\d+)/")
 ```
 
-- [**URL**](http://amoeba.social/lab/try-look-like/#/URL)
+- [**URL**](http://amoeba.social/lab/look-like/#/URL)
 ```ruby
 expect("google.com").to look_like("http://google.com")
 expect("http://google.com").to look_like("http://google.com")
 expect("google-com").not_to look_like("http://google.com")
 ```
 
-- [**Wildcard**](http://amoeba.social/lab/try-look-like/#/Wildcard)
+- [**Wildcard**](http://amoeba.social/lab/look-like/#/Wildcard)
 ```ruby
 expect("").to look_like("email*")
 expect("not.an.email").not_to look_like("email*")
@@ -128,7 +128,7 @@ expect("").to look_like("*")
 expect("any-thing").to look_like("*")
 ```
 
-- [**Numbers**](http://amoeba.social/lab/try-look-like/#/Numbers)
+- [**Numbers**](http://amoeba.social/lab/look-like/#/Numbers)
 ```ruby
 expect("5000").to look_like("number")
 expect("5,000").to look_like("number")
@@ -139,7 +139,7 @@ expect("5000").to look_like("5,000")
 expect("$5000").not_to look_like("5000")
 ```
 
-- [**Date and Time**](http://amoeba.social/lab/try-look-like/#/Date%20and%20Time)
+- [**Date and Time**](http://amoeba.social/lab/look-like/#/Date%20and%20Time)
 ```ruby
 expect("12/13/2014").to look_like("date")
 expect("12/13/2014").to look_like("DD/MM/YYYY")
@@ -152,14 +152,14 @@ expect("1994-11-05T08:15:30-05:00").to look_like("2011-02-05T18:23:30-05:00")
 
 ```
 
-- [**Arrays**](http://amoeba.social/lab/try-look-like/index.html#/Arrays)
+- [**Arrays**](http://amoeba.social/lab/look-like/index.html#/Arrays)
 ```ruby
 actual   = ["one@two.xyz",  "₹300,20", ""]
 expected = ["email"      , "₹amount" , "*"]
 expect(actual).to look_like(expected)
 ```
 
-- [**Rows**](http://amoeba.social/lab/try-look-like/index.html#/Rows)
+- [**Rows**](http://amoeba.social/lab/look-like/index.html#/Rows)
 ```ruby
 actual   = [["one@two.xyz"  ,  "₹300,20", "yes"],
             ["two@three.com",  "₹301,20", "no" ],
