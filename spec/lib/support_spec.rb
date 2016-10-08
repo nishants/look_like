@@ -6,6 +6,7 @@ describe LookLike::Support do
     expect(LookLike::Support.amount?("$53,23,1.00")).to equal(true)
     expect(LookLike::Support.amount?("$ 53,23,1.00 ")).to equal(true)
     expect(LookLike::Support.amount?("$ 53,23 ,1.00")).to equal(false)
+    expect(LookLike::Support.amount?("53,23 ,1.00")).to equal(false)
   end
 
   it "should validate enums" do
@@ -14,6 +15,15 @@ describe LookLike::Support do
     expect(LookLike::Support.enum?("a/c/vdsds")).to equal(true)
     expect(LookLike::Support.enum?("/c/vdsds")).to equal(false)
     expect(LookLike::Support.enum?("/c/vdsds/")).to equal(false)
+  end
+
+  it "normalize_currency" do
+    expect(LookLike::Support.normalize_currency("INRamount")).to eq("$amount")
+    expect(LookLike::Support.normalize_currency("INR500,00.00")).to eq("$500,00.00")
+    expect(LookLike::Support.normalize_currency("INR 500,00.00")).to eq("$ 500,00.00")
+    expect(LookLike::Support.normalize_currency(nil)).to eq("")
+    expect(LookLike::Support.normalize_currency("₹23,1.00")).to eq("$23,1.00")
+    expect(LookLike::Support.normalize_currency("")).to eq("")
   end
 
   it "parse enum values" do

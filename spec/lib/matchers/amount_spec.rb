@@ -30,6 +30,11 @@ describe "amount" do
     expect("£53,23,1").not_to look_like("$amount*")
 
     expect("$53,23,1").not_to look_like("£amount")
+
+    expect("£53,23,1").to look_like("£53,23,1")
+    expect("£53,23,1").not_to look_like("$53,23,1")
+    expect("$53,23,1").not_to look_like("£53,23,1")
+
     expect("$53,23,1").not_to look_like("INRamount")
     expect("INR 53,23,1").to look_like("INRamount")
   end

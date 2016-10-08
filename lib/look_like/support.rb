@@ -6,9 +6,17 @@ module LookLike
       !!(string =~ /\A#{URI::regexp}\z/)
     end
 
+    def self.amount_def?(string)
+      rounded = string.sub(".", ",").strip
+      /^\$[\s]*[\d,]+\d$/ === rounded
+    end
     def self.amount?(string)
       rounded = string.sub(".", ",").strip
       /^\$[\s]*[\d,]+\d$/ === rounded
+    end
+
+    def self.normalize_currency(amount)
+      (amount.nil? || amount.empty?) ?  "" : amount.sub(currency_of(amount), "$")
     end
 
     def self.enum?(string)
@@ -32,6 +40,10 @@ module LookLike
 
     def self.email?(string)
       string.include?("@") && !string.include?("/")  && loose_url?(string)
+    end
+
+    def self.amount_def?(expected)
+      amount?(expected.sub(/^[^\d]+/, "$"))
     end
 
   end
