@@ -10,8 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["nishant.singh87@gmail.com"]
 
   spec.summary       = "an rspec matcher for comparing visually similar strings"
-  spec.description   = "use as expect('a long paragraph with words').to look_like('another long paragraph with words') "
-  spec.homepage      = "http://amoeba.social"
+  spec.homepage      = "http://amoeba.social/lab/look-like/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
