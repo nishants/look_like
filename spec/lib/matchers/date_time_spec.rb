@@ -10,6 +10,7 @@ describe "amount" do
   it "should support all date formates" do
     expect("12/13/2014").to look_like("date")
     expect("12/32/a").not_to look_like("date")
+    expect("//").not_to look_like("date")
 
     expect("12/13/2014").to look_like("DD/MM/YYYY")
     expect("12-13-2014").to look_like("DD-MM-YYYY")
@@ -27,6 +28,7 @@ describe "amount" do
     expect("2014-12-31 T 11:59:13").to look_like("YYYY-MM-DD T hh:mm:ss")
 
     expect("2014-12-31 Z 11:59:13").not_to look_like("YYYY-MM-DD T hh:mm:ss")
+    expect("//").not_to look_like("YYYY-MM-DD T hh:mm:ss")
 
     expect("2014-12-31 T 11:59:13").not_to look_like("YYYY-MM-DD Z HH:MM:SS")
 

@@ -51,11 +51,11 @@ module LookLike
     end
 
     def self.time?(stamp)
-      @@TIME_STAMP_REGEX === stamp
+      stamp.include?("x") && @@TIME_STAMP_REGEX === stamp
     end
 
     def self.date?(stamp)
-      @@DATE_STAMP_REGEX === stamp
+      stamp.include?("x") && @@DATE_STAMP_REGEX === stamp
     end
 
     def self.mask_date(stamp)
