@@ -138,6 +138,11 @@ expect("5000").to look_like("5,000")
 expect("$5000").not_to look_like("5000")
 ```
 
+- [**Date and Time**](http://amoeba.social/lab/try-look-like/#/Date%20and%20Time)
+```ruby
+
+```
+
 ## Development
 - After checking out the repo, run `bin/setup` to install dependencies. 
 - Then, run `rake spec` to run the tests. 
