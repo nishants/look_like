@@ -28,16 +28,16 @@ $ bundle install
 
 ## Usage
 ```ruby
-rows     = [ ["one@two.xyz",    "₹300,20", "yes"],
-             ["two@three.com",  "₹301,20", "no" ],
-             ["one@two.xyz",    "₹121,20", ""   ]]
+actual   = [["one@two.xyz"  ,  "₹300,20", "yes"],
+            ["two@three.com",  "₹301,20", "no" ],
+            ["one@two.xyz"  ,  "₹121,20", ""   ]]
+            
+expected = [["email", "₹amount", "yes/no*"]]
 
-matchers = [["email", "₹amount", "yes/no*"]]
-
-expect(rows).to look_like(matchers)    
+expect(actual).to look_like(expected)  
 ```
 
-[Try matchers in browser here](http://amoeba.social/lab/try-look-like/)
+[Try online here](http://localhost:3001/2.0/lab/try-look-like/index.html#/Rows)
 ## Custom Matchers
 ```ruby
 
@@ -140,8 +140,33 @@ expect("$5000").not_to look_like("5000")
 
 - [**Date and Time**](http://amoeba.social/lab/try-look-like/#/Date%20and%20Time)
 ```ruby
+expect("12/13/2014").to look_like("date")
+expect("12/13/2014").to look_like("DD/MM/YYYY")
+expect("06/21/1987").to look_like("12/13/2014")
 
+expect("1994-11-05T08:15:30-05:00").to look_like("timestamp")
+expect("2014-12-31 T 11:59:13").to look_like("YYYY-MM-DD T HH:MM:SS")
+expect("2014-12-31 T 11:59:13").to look_like("YYYY-MM-DD T hh:mm:ss")
+expect("1994-11-05T08:15:30-05:00").to look_like("1994-11-05T08:15:30-05:00")
 ```
+
+- [**Arrays**](http://localhost:3001/2.0/lab/try-look-like/index.html#/Arrays)
+```ruby
+actual   = ["one@two.xyz",  "₹300,20", ""]
+expected = ["email"      , "₹amount" , "*"]
+expect(actual).to look_like(expected)
+```
+
+- [**Rows**](http://localhost:3001/2.0/lab/try-look-like/index.html#/Rows)
+```ruby
+actual   = [["one@two.xyz"  ,  "₹300,20", "yes"],
+            ["two@three.com",  "₹301,20", "no" ],
+            ["one@two.xyz"  ,  "₹121,20", ""   ]]
+expected = [["email", "₹amount", "yes/no*"]]
+
+expect(actual).to look_like(expected)
+```
+
 
 ## Development
 - After checking out the repo, run `bin/setup` to install dependencies. 
