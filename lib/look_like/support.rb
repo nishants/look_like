@@ -10,10 +10,6 @@ module LookLike
       !!(string =~ /\A#{URI::regexp}\z/)
     end
 
-    def self.amount_def?(string)
-      rounded = string.sub(".", ",").strip
-      /^\$[\s]*[\d,]+\d$/ === rounded
-    end
     def self.amount?(string)
       rounded = string.sub(".", ",").strip
       /^\$[\s]*[\d,]+\d$/ === rounded

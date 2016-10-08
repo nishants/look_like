@@ -148,7 +148,8 @@ expect("06/21/1987").to look_like("12/13/2014")
 expect("1994-11-05T08:15:30-05:00").to look_like("timestamp")
 expect("2014-12-31 T 11:59:13").to look_like("YYYY-MM-DD T HH:MM:SS")
 expect("2014-12-31 T 11:59:13").to look_like("YYYY-MM-DD T hh:mm:ss")
-expect("1994-11-05T08:15:30-05:00").to look_like("1994-11-05T08:15:30-05:00")
+expect("1994-11-05T08:15:30-05:00").to look_like("2011-02-05T18:23:30-05:00")
+
 ```
 
 - [**Arrays**](http://amoeba.social/lab/try-look-like/index.html#/Arrays)
