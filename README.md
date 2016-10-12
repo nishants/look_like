@@ -37,7 +37,7 @@ expected = [["email", "₹amount", "yes/no*"]]
 expect(actual).to look_like(expected)  
 ```
 
-[Try online here](http://localhost:3001/2.0/lab/look-like/index.html#/Rows)
+[Try online here](http://amoeba.social/lab/look-like/index.html#/Rows)
 ## Custom Matchers
 ```ruby
 
