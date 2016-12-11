@@ -14,13 +14,16 @@ describe "numbers" do
     expect("$5000.00").not_to look_like("5000")
     expect("$5000").not_to look_like("5000")
   end
+
   it "should support integers" do
     expect("0").to look_like("integer")
     expect("1").to look_like("integer")
+    expect("01").to look_like("integer")
     expect("5000").to look_like("integer")
     expect("-5000").not_to look_like("integer")
     expect("1.00").not_to look_like("integer")
   end
+
   it "should support negative integers" do
     expect("-1").to look_like("-integer")
     expect("-10").to look_like("-integer")
@@ -41,5 +44,22 @@ describe "numbers" do
 
     expect("").not_to look_like("+-integer")
     expect("1.00").not_to look_like("+-integer*")
+  end
+
+
+  it "should support floats" do
+    expect(".0").to look_like("float")
+    expect(".1").to look_like("float")
+    expect("00.0").to look_like("float")
+    expect("01.00").to look_like("float")
+    expect("1.00").to look_like("float")
+    expect("5000.989").to look_like("float")
+
+    expect("-1.0").not_to look_like("float")
+    expect("-5000.989").not_to look_like("float")
+
+    expect("5000").not_to look_like("float")
+    expect("1").not_to look_like("float")
+    expect("-1").not_to look_like("float")
   end
 end
