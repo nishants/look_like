@@ -1,12 +1,12 @@
 LookLike::Matchers.define(
     {
-        :name     => :string,
-        :desc     => "string",
+        :name     => :unkown_matcher,
+        :desc     => "unkown matcher",
         :select   => lambda{|expected|
-          expected == "string"
+          true
         },
         :match    => lambda{ |actual|
-          actual.strip.length > 0
+          false
         }
     })
 
