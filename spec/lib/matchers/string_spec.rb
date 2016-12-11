@@ -19,4 +19,12 @@ describe "amount" do
     expect("").not_to look_like("name")
   end
 
+  it "should support name matcher" do
+    expect("some name").to look_like("string")
+
+    expect("some larger name with multiple words").to look_like("string*")
+    expect("").to look_like("string*")
+    expect("").not_to look_like("string")
+  end
+
 end
