@@ -27,8 +27,9 @@ module LookLike
       optionally_empty || !actual.nil? && (@matcher.parameters.length == 2 ? @matcher.call(actual, expected) : @matcher.call(actual))
     end
 
-    def select(expected)
-      @selector.call(expected.sub("*", "").strip)
+    def select(expected, actual)
+      expected = expected.sub("*", "").strip
+      @selector.parameters.length == 2 ? @selector.call(expected, actual) : @selector.call(expected)
     end
 
   end

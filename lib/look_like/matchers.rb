@@ -6,21 +6,21 @@ module LookLike
       @@matchers.unshift(LookLike::Matcher.new(config))
     end
 
-    def self.find(expected)
+    def self.find(expected, actual)
       matchers = [LookLike::NestedArrayMatcher.new(@@matchers), LookLike::ArrayMatcher.new(@@matchers)] + @@matchers
-      matchers.find { |matcher| matcher.select(expected) }
+      matchers.find { |matcher| matcher.select(expected, actual) }
     end
 
     def self.match(actual, expected)
-      actual == expected || find(expected).match(actual, expected)
+      actual == expected || find(expected, actual).match(actual, expected)
     end
 
     def self.error(actual, expected)
-      find(expected).error(actual, expected)
+      find(expected, actual).error(actual, expected)
     end
 
     def self.negate_error(actual, expected)
-      find(expected).negate_error(actual, expected)
+      find(expected, actual).negate_error(actual, expected)
     end
   end
 

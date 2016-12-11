@@ -7,12 +7,12 @@ module LookLike
 
 
     def element_error(actual, expected)
-      @matchers.find { |matcher| matcher.select(expected) }.error(actual, expected)
+      @matchers.find { |matcher| matcher.select(expected, actual) }.error(actual, expected)
     end
 
 
     def match_element(actual, expected)
-      @matchers.find { |matcher| matcher.select(expected) }.match(actual, expected)
+      @matchers.find { |matcher| matcher.select(expected, actual) }.match(actual, expected)
     end
 
     def match(actual_array, expected_array)
@@ -28,7 +28,7 @@ module LookLike
       matches
     end
 
-    def select(expected)
+    def select(expected, actual)
       expected.is_a? Array
     end
 

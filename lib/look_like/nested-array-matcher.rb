@@ -9,7 +9,7 @@ module LookLike
       matches
     end
 
-    def select(expected)
+    def select(expected, actual)
       expected.is_a?(Array) && expected.length > 0 && expected[0].is_a?(Array)
     end
 
