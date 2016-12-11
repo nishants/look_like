@@ -39,6 +39,10 @@ module LookLike
       float?(value.sub("+", "")) || negative_float?(value)
     end
 
+    def self.signed_number?(value)
+      number?(value.sub("+", "")) || negative_number?(value)
+    end
+
     def self.url?(string)
       !!(string =~ /\A#{URI::regexp}\z/)
     end
@@ -90,6 +94,5 @@ module LookLike
     def self.mask_date(stamp)
       stamp.gsub(@@DATE_CHARS, "x")
     end
-
   end
 end

@@ -30,6 +30,27 @@ describe "numbers" do
 
     expect("5000.00").not_to look_like("-number*")
   end
+  it "should support signed numbers" do
+    expect("-5000.00").to look_like("+-number")
+    expect("-5000").to look_like("+-number")
+    expect("-5,000").to look_like("+-number")
+    expect("-5,00.000").to look_like("+-number")
+
+    expect("5000.00").to look_like("+-number")
+    expect("5000").to look_like("+-number")
+    expect("5,000").to look_like("+-number")
+    expect("5,00.000").to look_like("+-number")
+
+    expect("-5,00.0w00").not_to look_like("+-number")
+    expect("-5,43.11").to look_like("+-number")
+    expect("-6993").not_to look_like("5000*")
+    expect("-6993").to look_like("-5000")
+
+    expect("5,00.0w00").not_to look_like("+-number")
+    expect("5,43.11").to look_like("+-number")
+
+    expect("5000.00").to look_like("+-number*")
+  end
 
   it "should support integers" do
     expect("0").to look_like("integer")
