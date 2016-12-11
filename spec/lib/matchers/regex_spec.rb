@@ -9,4 +9,13 @@ describe "regex matching" do
     expect("i have  tess").not_to look_like("/test/")
   end
 
+  it "should support substring" do
+    expect("One Minute").to look_like("/Minute|Hour|Day/")
+    expect("Five Hour").to look_like("/Minute|Hour|Day/")
+    expect("Two Day").to look_like("/Minute|Hour|Day/")
+    expect("One Day, Five Hours and One Minutes").to look_like("/Minute|Hour|Day/")
+
+    expect("One Week").not_to look_like("/Minute|Hour|Day/")
+  end
+
 end
