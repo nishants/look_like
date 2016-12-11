@@ -6,6 +6,10 @@ module LookLike
     @@DATE_STAMP_REGEX = /^[\/x]+$/
     @@TIME_STAMP_REGEX = /^[\/x\-\:TZ\s]+$/
 
+    def self.integer?(value)
+       /^[0-9]+$/ === value
+    end
+
     def self.url?(string)
       !!(string =~ /\A#{URI::regexp}\z/)
     end

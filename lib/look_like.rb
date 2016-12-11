@@ -19,4 +19,5 @@ require "look_like/matchers/regex"
 require "look_like/matchers/formatted-number"
 require "look_like/matchers/amount"
 require "look_like/matchers/number"
+require "look_like/matchers/integer"
 

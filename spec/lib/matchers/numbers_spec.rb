@@ -14,5 +14,12 @@ describe "numbers" do
     expect("$5000.00").not_to look_like("5000")
     expect("$5000").not_to look_like("5000")
   end
+  it "should support integers" do
+    expect("0").to look_like("integer")
+    expect("1").to look_like("integer")
+    expect("5000").to look_like("integer")
+    expect("-5000").not_to look_like("integer")
+    expect("1.00").not_to look_like("integer")
+  end
 
 end
