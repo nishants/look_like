@@ -12,7 +12,7 @@ module LookLike
     end
 
     def self.match(actual, expected)
-      actual == expected || find(expected, actual).match(actual, expected)
+      find(expected, actual).match(actual, expected)
     end
 
     def self.error(actual, expected)
