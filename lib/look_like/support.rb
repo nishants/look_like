@@ -6,6 +6,10 @@ module LookLike
     @@DATE_STAMP_REGEX = /^[\/x]+$/
     @@TIME_STAMP_REGEX = /^[\/x\-\:TZ\s]+$/
 
+    def self.number?(value)
+      /^[\d,.]+\d$/ === value
+    end
+
     def self.integer?(value)
        /^[0-9]+$/ === value
     end

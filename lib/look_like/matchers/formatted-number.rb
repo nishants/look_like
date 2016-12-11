@@ -1,10 +1,11 @@
-format = /^[\d,.]+\d$/
 LookLike::Matchers.define(
     {
         :name     => :fomatted_number,
-        :desc     => "formatted number",
+        :desc     => "number",
         :select   => lambda{|expected|
-          expected == "number" || format === expected
+          expected == "number" ||  LookLike::Support.number?(expected)
         },
-        :match    => lambda{|actual| format === actual }
+        :match    => lambda{|actual|
+          LookLike::Support.number?(actual)
+        }
     })
