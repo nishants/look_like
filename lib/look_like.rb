@@ -8,7 +8,7 @@ require "look_like/support"
 
 require "look_like/matchers/unkown-matcher"
 require "look_like/matchers/equality"
-require "look_like/matchers/any-value"
+require "look_like/matchers/wildcard"
 require "look_like/matchers/string"
 require "look_like/matchers/email"
 require "look_like/matchers/enum"
