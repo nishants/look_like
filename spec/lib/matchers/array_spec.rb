@@ -21,7 +21,7 @@ describe "arrays" do
     expected  = ["email", "₹amount", "yes/no"]
 
     error    = LookLike::Matchers.error(actual, expected)
-    expect(error).to eq("[✓, ✓, x [\"\" does not look like \"yes/no\" (enum)]]")
+    expect(error).to eq("[✓, ✓, X {'' does not look like 'yes/no' (enum)}]")
   end
 
   it "negating assertion error message for arrays" do
@@ -29,7 +29,7 @@ describe "arrays" do
     expected  = ["email", "₹amount", "yes/no"]
 
     error    = LookLike::Matchers.negate_error(actual, expected)
-    expect(error).to eq("Expected not to match.[✓, ✓, x [\"\" does not look like \"yes/no\" (enum)]]")
+    expect(error).to eq("Expected not to match.[✓, ✓, X {'' does not look like 'yes/no' (enum)}]")
   end
 
   it "assertion error message for nested arrays" do
@@ -37,7 +37,7 @@ describe "arrays" do
     expected  = [["email", "₹amount", "yes/no"]]
 
     error    = LookLike::Matchers.error(actual, expected)
-    expect(error).to eq("[x [[✓, ✓, x [\"\" does not look like \"yes/no\" (enum)]]]]")
+    expect(error).to eq("[X [[✓, ✓, X {'' does not look like 'yes/no' (enum)}]]]")
   end
 
   it "negating assertion error message for nested arrays" do
@@ -45,7 +45,7 @@ describe "arrays" do
     expected  = [["email", "₹amount", "yes/no"]]
 
     error    = LookLike::Matchers.negate_error(actual, expected)
-    expect(error).to eq("Expected not to match.[x [[✓, ✓, x [\"\" does not look like \"yes/no\" (enum)]]]]")
+    expect(error).to eq("Expected not to match.[X [[✓, ✓, X {'' does not look like 'yes/no' (enum)}]]]")
   end
 
   it "assertion error message for arrays length" do
@@ -53,7 +53,7 @@ describe "arrays" do
     expected  = [["email", "₹amount", "yes/no*"]]
 
     error    = LookLike::Matchers.error(actual, expected)
-    expect(error).to eq("[x [Expected 3 elements, but found 2.. Expected : [email, ₹amount, yes/no*]. Found    : [one@two.xyz, ₹300,20]]]")
+    expect(error).to eq("[X [Expected 3 elements, but found 2.. Expected : [email, ₹amount, yes/no*]. Found    : [one@two.xyz, ₹300,20]]]")
   end
 
 end

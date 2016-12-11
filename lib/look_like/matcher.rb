@@ -14,11 +14,11 @@ module LookLike
     end
 
     def error(actual, expected)
-      "\"#{actual}\" does not look like \"#{expected}\" (#{@desc})"
+      "'#{actual}' does not look like '#{expected}' (#{@desc})"
     end
 
     def negate_error(actual, expected)
-      "Did not expect    :\"#{actual}\" to look like  : \"#{expected}\" (#{@desc})"
+      "Did not expect    :'#{actual}' to look like  : '#{expected}' (#{@desc})"
     end
 
     def match(actual, expected)

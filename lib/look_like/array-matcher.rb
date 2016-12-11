@@ -42,7 +42,7 @@ module LookLike
       end
       actual_array.each_with_index { |actual, index|
         expected = expected_array[index]
-        message.push(match_element(actual, expected) ? "✓" : "x [#{element_error(actual, expected)}]")
+        message.push(match_element(actual, expected) ? "✓" : "X {#{element_error(actual, expected)}}")
       }
       "[#{message.join(", ")}]"
     end
