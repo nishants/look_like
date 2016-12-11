@@ -26,4 +26,5 @@ require "look_like/matchers/signed-integer"
 require "look_like/matchers/float"
 require "look_like/matchers/negative-float"
 require "look_like/matchers/signed-float"
+require "look_like/matchers/percent"
 

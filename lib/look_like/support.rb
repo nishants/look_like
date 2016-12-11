@@ -94,5 +94,9 @@ module LookLike
     def self.mask_date(stamp)
       stamp.gsub(@@DATE_CHARS, "x")
     end
+
+    def self.percent?(value)
+      /^[\-+]{0,1}[0-9]*[\.]{0,1}[0-9]*%+$/  === value
+    end
   end
 end
