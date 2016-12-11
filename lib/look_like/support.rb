@@ -18,6 +18,11 @@ module LookLike
       /^[0-9]*\.[0-9]+$/ === value
     end
 
+
+    def self.negative_number?(value)
+      value.start_with?("-") && number?(value.sub("-", "").strip)
+    end
+
     def self.negative_integer?(value)
       value.start_with?("-") && integer?(value.sub("-", "").strip)
     end
