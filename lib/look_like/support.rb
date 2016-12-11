@@ -18,6 +18,10 @@ module LookLike
       value.start_with?("-") && integer?(value.sub("-", "").strip)
     end
 
+    def self.negative_float?(value)
+      value.start_with?("-") && float?(value.sub("-", "").strip)
+    end
+
     def self.signed_integer?(value)
       integer?(value.sub("+", "")) || negative_integer?(value)
     end

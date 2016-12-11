@@ -23,4 +23,5 @@ require "look_like/matchers/integer"
 require "look_like/matchers/negative-integer"
 require "look_like/matchers/signed-integer"
 require "look_like/matchers/float"
+require "look_like/matchers/negative-float"
 
