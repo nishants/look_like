@@ -10,6 +10,10 @@ module LookLike
        /^[0-9]+$/ === value
     end
 
+    def self.negative_integer?(value)
+      value.start_with?("-") && integer?(value.sub("-", "").strip)
+    end
+
     def self.url?(string)
       !!(string =~ /\A#{URI::regexp}\z/)
     end
