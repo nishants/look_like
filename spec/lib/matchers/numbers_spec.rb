@@ -31,4 +31,15 @@ describe "numbers" do
     expect("1.00").not_to look_like("-integer*")
   end
 
+  it "should support signed integers" do
+    expect("-1").to look_like("+-integer")
+    expect("-10").to look_like("+-integer")
+    expect("-50000").to look_like("+-integer")
+    expect("5000").to look_like("+-integer*")
+    expect("1").to look_like("+-integer*")
+    expect("0").to look_like("+-integer*")
+
+    expect("").not_to look_like("+-integer")
+    expect("1.00").not_to look_like("+-integer*")
+  end
 end

@@ -14,6 +14,10 @@ module LookLike
       value.start_with?("-") && integer?(value.sub("-", "").strip)
     end
 
+    def self.signed_integer?(value)
+      integer?(value.sub("+", "")) || negative_integer?(value)
+    end
+
     def self.url?(string)
       !!(string =~ /\A#{URI::regexp}\z/)
     end
