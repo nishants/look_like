@@ -78,4 +78,30 @@ describe "numbers" do
     expect("-1").not_to look_like("-float")
     expect("1").not_to look_like("-float")
   end
+  it "should support signed floats" do
+    expect("-.0").to look_like("+-float")
+    expect(".0").to look_like("+-float")
+
+    expect("-.1").to look_like("+-float")
+    expect(".1").to look_like("+-float")\
+
+    expect("-00.0").to look_like("+-float")
+    expect("00.0").to look_like("+-float")
+
+    expect("-01.00").to look_like("+-float")
+    expect("-1.00").to look_like("+-float")
+    expect("-5000.989").to look_like("+-float")
+
+    expect("01.00").to look_like("+-float")
+    expect("1.00").to look_like("+-float")
+    expect("5000.989").to look_like("+-float")
+
+    expect("5000").not_to look_like("+-float")
+    expect("1").not_to look_like("+-float")
+    expect("1").not_to look_like("+-float")
+
+    expect("-5000").not_to look_like("+-float")
+    expect("-1").not_to look_like("+-float")
+    expect("1").not_to look_like("+-float")
+  end
 end

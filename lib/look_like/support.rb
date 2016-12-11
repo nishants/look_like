@@ -26,6 +26,10 @@ module LookLike
       integer?(value.sub("+", "")) || negative_integer?(value)
     end
 
+    def self.signed_float?(value)
+      float?(value.sub("+", "")) || negative_float?(value)
+    end
+
     def self.url?(string)
       !!(string =~ /\A#{URI::regexp}\z/)
     end
